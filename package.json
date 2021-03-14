@@ -7,7 +7,7 @@
   "homepage": "https://ionr19.github.io/employee-app",
   "scripts": {
     "start": "parcel ./public/index.html",
-    "build": "parcel build ./public/index.html --no-source-maps --no-cache --public-url='./' -d build",
+    "build": "parcel build ./public/index.html --no-source-maps --no-cache --public-url=./ -d build",
     "serve": "json-server --watch db.json --routes routes.json",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
