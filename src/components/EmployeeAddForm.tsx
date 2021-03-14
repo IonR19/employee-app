@@ -1,89 +1,84 @@
 import React from "react";
 
+const InputField = ({ name, label = "", type = "text", placeholder = "" }) => {
+  return (
+    <div className="field">
+      <label className="label is-normal" htmlFor={name}>
+        {label}
+      </label>
+      <div className="field">
+        <div className="control">
+          <input className="input" id={name} name={name} type={type} placeholder={placeholder} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function EmployeeAddForm() {
   return (
     <div>
-      <div className="field">
-        <label className="label">Name</label>
-        <div className="control">
-          <input className="input" type="text" placeholder="Text input" />
-        </div>
-      </div>
-
-      <div className="field">
-        <label className="label">Username</label>
-        <div className="control has-icons-left has-icons-right">
-          <input className="input is-success" type="text" placeholder="Text input" defaultValue="bulma" />
-          <span className="icon is-small is-left">
-            <i className="fas fa-user"></i>
-          </span>
-          <span className="icon is-small is-right">
-            <i className="fas fa-check"></i>
-          </span>
-        </div>
-        <p className="help is-success">This username is available</p>
-      </div>
-
-      <div className="field">
-        <label className="label">Email</label>
-        <div className="control has-icons-left has-icons-right">
-          <input className="input is-danger" type="email" placeholder="Email input" defaultValue="hello@" />
-          <span className="icon is-small is-left">
-            <i className="fas fa-envelope"></i>
-          </span>
-          <span className="icon is-small is-right">
-            <i className="fas fa-exclamation-triangle"></i>
-          </span>
-        </div>
-        <p className="help is-danger">This email is invalid</p>
-      </div>
-
-      <div className="field">
-        <label className="label">Subject</label>
-        <div className="control">
-          <div className="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
+      <div className="box">
+        <div className="columns is-multiline">
+          <div className="column is-4">
+            <InputField label="Name" name="email" type="text" placeholder="write your name" />
+          </div>
+          <div className="column is-3">
+            <InputField label="Civil ID" name="civil_id" type="text" placeholder="write your email" />
+          </div>
+          <div className="column">
+            <InputField label="Gender" name="gender" type="text" />
+          </div>
+          <div className="column is-3">
+            <InputField label="Nationality" name="nationality" type="text" />
+          </div>
+          <div className="column is-2">
+            <InputField label="Martial State" name="martial" type="text" />
+          </div>
+          <div className="column is-5">
+            <InputField label="Mail" name="email" type="mail" />
+          </div>
+          <div className="column is-5">
+            <InputField label="MEW Mail" name="email" type="mew_mail" />
           </div>
         </div>
       </div>
-
-      <div className="field">
-        <label className="label">Message</label>
-        <div className="control">
-          <textarea className="textarea" placeholder="Textarea"></textarea>
+      <div className="box">
+        <div className="columns is-multiline">
+          <div className="column is-4">
+            <InputField label="Job Title" name="email" type="text" />
+          </div>
+          <div className="column is-4">
+            <InputField label="Education Level" name="email" type="text" />
+          </div>
+          <div className="column is-4">
+            <InputField label="Authority" name="authority" type="text" />
+          </div>
+          <div className="column ">
+            <InputField label="Move in Date" name="movein_date" type="date" />
+          </div>
+          <div className="column">
+            <InputField label="Hire Date" name="hire_date" type="date" />
+          </div>
+          <div className="column">
+            <InputField label="Years of Experience" name="work_exp" type="number" />
+          </div>
         </div>
       </div>
-
-      <div className="field">
-        <div className="control">
-          <label className="checkbox">
-            <input type="checkbox" />I agree to the <a href="#">terms and conditions</a>
-          </label>
-        </div>
-      </div>
-
-      <div className="field">
-        <div className="control">
-          <label className="radio">
-            <input type="radio" name="question" />
-            Yes
-          </label>
-          <label className="radio">
-            <input type="radio" name="question" />
-            No
-          </label>
-        </div>
-      </div>
-
-      <div className="field is-grouped">
-        <div className="control">
-          <button className="button is-link">Submit</button>
-        </div>
-        <div className="control">
-          <button className="button is-link is-light">Cancel</button>
+      <div className="box">
+        <div className="columns is-is-multiline">
+          <div className="column">
+            <InputField label="Capital" name="capital" type="text" />
+          </div>
+          <div className="column">
+            <InputField label="City" name="city" type="text" />
+          </div>
+          <div className="column">
+            <InputField label="Street" name="street" type="text" />
+          </div>
+          <div className="column">
+            <InputField label="House" name="house" type="text" />
+          </div>
         </div>
       </div>
     </div>
