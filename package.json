@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-nightly.628",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
     "cssnano": "^4.1.10",
