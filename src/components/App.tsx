@@ -1,5 +1,5 @@
 import React from "react";
-import EmployeeAdd from "./EmployeeAddForm";
+import EmployeeAdd from "./EmployeeAddForm/FormContainer";
 // import "bulma";
 export default function App() {
   return (

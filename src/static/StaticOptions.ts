@@ -114,14 +114,26 @@ export const NationalityOption = [
   { value: "Zimbabwean" },
 ];
 
-export const genderOptions = [
+export const GenderOptions = [
   { title: "Male", value: "M" },
   { title: "Female", value: "F" },
 ];
 
-export const MartialOtions = [
+export const MartialOptions = [
+  { value: "Single" },
   { value: "Married" },
   { value: "Divorced" },
-  { value: "Signle" },
   { value: "Widow" },
+];
+
+export const SectionOptions = [
+  { value: "AH", title: "Ahmadi" },
+  { value: "JH", title: "Jahra" },
+  { value: "FR", title: "Farwaniya" },
+  { value: "AS", title: "Asima" },
+  { value: "HW", title: "Hawally" },
+  { value: "MB", title: "Mubarak Al Kabeer" },
+  { value: "REPAIR", title: "Maintenance & Protection" },
+  { value: "SECURITY", title: "Saftey & Security" },
+  { value: "CIVIL", title: "Civil Work" },
 ];
