@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import redux_logger from "redux-logger";
 import reduxThunk from "redux-thunk";
+import { listReducer } from "./employees/reducers";
 
 const reducers = combineReducers({
-  dev: () => null,
+  todos: listReducer,
 });
 
 const middlewares = [redux_logger, reduxThunk];
