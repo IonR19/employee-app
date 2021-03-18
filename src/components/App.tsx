@@ -1,11 +1,7 @@
 import React from "react";
 import EmployeeAdd from "./EmployeeAddForm/FormContainer";
-<<<<<<< HEAD
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
-=======
->>>>>>> 3ea2754bd12403dc52c430433e4f699f1cdafc92
-// import "bulma";
 export default function App() {
   return (
     <BrowserRouter>
