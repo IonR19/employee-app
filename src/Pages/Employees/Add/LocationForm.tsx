@@ -1,5 +1,5 @@
 import React from "react";
-import InputField from "../FormElements/InputField";
+import InputField from "../../../components/FormElements/InputField";
 
 const LocationForm = () => {
   const [value, setValue] = React.useState({

@@ -1,7 +1,7 @@
 import React from "react";
-import { GenderOptions, MartialOptions, NationalityOption } from "../../static/StaticOptions";
-import InputField from "../FormElements/InputField";
-import OptionInputField from "../FormElements/OptionInputField";
+import { GenderOptions, MartialOptions, NationalityOption } from "../../../static/StaticOptions";
+import InputField from "../../../components/FormElements/InputField";
+import OptionInputField from "../../../components/FormElements/OptionInputField";
 
 const PersonalForm = () => {
   const [value, setValue] = React.useState({

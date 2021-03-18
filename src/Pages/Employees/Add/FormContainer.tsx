@@ -7,7 +7,7 @@ export default function FormContainer() {
   const handleSubmit: React.FormEventHandler<EventTarget> = (e) => {
     
     e.preventDefault();
-    [...(e.target as HTMLFormElement).elements!].forEach((el: HTMLFormControlsCollection) => {
+    [...(e.target as HTMLFormElement).elements!].forEach((el: any) => {
       console.log(`${el.name} ~ ${el.value}`);
     });
   };

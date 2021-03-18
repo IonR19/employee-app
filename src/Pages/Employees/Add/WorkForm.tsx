@@ -1,7 +1,7 @@
 import React from "react";
-import { SectionOptions } from "../../static/StaticOptions";
-import InputField from "../FormElements/InputField";
-import OptionInputField from "../FormElements/OptionInputField";
+import { SectionOptions } from "../../../static/StaticOptions";
+import InputField from "../../../components/FormElements/InputField";
+import OptionInputField from "../../../components/FormElements/OptionInputField";
 
 const WorkForm = () => {
   const [value, setValue] = React.useState({
@@ -75,7 +75,13 @@ const WorkForm = () => {
           />
         </div>
         <div className="column">
-          <OptionInputField label="Section" name="section" value={section} options={SectionOptions} onChange={handleState} />
+          <OptionInputField
+            label="Section"
+            name="section"
+            value={section}
+            options={SectionOptions}
+            onChange={handleState}
+          />
         </div>
       </div>
     </div>
