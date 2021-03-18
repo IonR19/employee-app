@@ -4,9 +4,10 @@ import PersonalForm from "./PersonalForm";
 import WorkForm from "./WorkForm";
 
 export default function FormContainer() {
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: React.FormEventHandler<EventTarget> = (e) => {
+    
     e.preventDefault();
-    [...e.target.elements!].forEach((el: HTMLInputElement) => {
+    [...(e.target as HTMLFormElement).elements!].forEach((el: HTMLFormControlsCollection) => {
       console.log(`${el.name} ~ ${el.value}`);
     });
   };
