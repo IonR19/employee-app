@@ -1,8 +1,8 @@
 import React from "react";
-import EmployeeAdd from "../Pages/Employees/Add/FormContainer";
 import { BrowserRouter, Route } from "react-router-dom";
+import EmployeeAdd from "../Pages/Employees/Add/EmployeeAdd.comp";
 import Navbar from "./Navbar/Navbar";
-import EmployeeList from "../Pages/Employees/List/List";
+import EmployeeList from "../Pages/Employees/Search/EmployeeSearch.page";
 export default function App() {
   return (
     <BrowserRouter>

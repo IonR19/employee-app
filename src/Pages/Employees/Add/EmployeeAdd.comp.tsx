@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import LocationForm from "./LocationForm";
-import PersonalForm from "./PersonalForm";
-import WorkForm from "./WorkForm";
+import LocationForm from "./EmployeeLocationForm.comp";
+import PersonalForm from "./EmployeePersonalForm.comp";
+import WorkForm from "./EmployeeWorkForm.comp";
 
 export default function FormContainer() {
   const handleSubmit: React.FormEventHandler<EventTarget> = (e) => {

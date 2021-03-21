@@ -1,4 +1,4 @@
-import { ActionTypes } from "./actionTypes";
+import { ActionTypes } from "./employee.actionTypes";
 export const addEmployee = (formData: any) => {
   //add to server
   //add locally?
