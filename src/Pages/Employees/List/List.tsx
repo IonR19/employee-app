@@ -1,6 +1,53 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, connect } from "react-redux";
+import { combineReducers } from "redux";
 import { RootState } from "../../../store/store";
+
+const A = connect((state: any) => ({ vodo: state.vodo }))((props: any) => {
+  console.log('component A')
+  const [input, setInput] = useState("");
+  return (
+    <div>
+      <ul>
+        {props.vodo.map((v: any, i: number) => (
+          <li key={i}>
+            {v} <button onClick={() => props.dispatch({ type: "DELETE", payload: v })}>delete</button>{" "}
+          </li>
+        ))}
+      </ul>
+      <input type="text" onChange={(e) => setInput(e.target.value)} />
+      <button
+        className="button is-primary"
+        onClick={() => props.dispatch({ type: "ADD", payload: input })}
+      >
+        Add
+      </button>
+    </div>
+  );
+});
+const B = connect((state: any) => ({ vodo: state.todos }))((props: any) => {
+  console.log('component B')
+  const [input, setInput] = useState("");
+  return (
+    <div>
+      <ul>
+        {props.vodo.map((v: any, i: number) => (
+          <li key={i}>
+            {v}
+            <button onClick={() => props.dispatch({ type: "REMOVE_USER", payload: v })}>delete</button>
+          </li>
+        ))}
+      </ul>
+      <input type="text" onChange={(e) => setInput(e.target.value)} />
+      <button
+        className="button is-primary"
+        onClick={() => props.dispatch({ type: "ADD_USER", payload: input })}
+      >
+        Add
+      </button>
+    </div>
+  );
+});
 
 const List: React.FC = () => {
   const dispatch = useDispatch();
@@ -9,28 +56,15 @@ const List: React.FC = () => {
 
   return (
     <div>
-      <div className="card mb-4">
-        <input type="text" className="input" value={value} onChange={(e) => setValue(e.target.value)} />
-        <button
-          className="button is-primary"
-          onClick={() => dispatch({ type: "ADD_USER", payload: value })}
-        >
-          Add
-        </button>
-        <h1 className="title has-text-centered">Todos</h1>
-        <ul>
-          {todos.map((todo) => (
-            <>
-              <li key={todo}>
-                {todo}
-                <button onClick={() => dispatch({ type: "REMOVE_USER", payload: todo })}>
-                  Delete me
-                </button>
-              </li>
-            </>
-          ))}
-        </ul>
+      <div className="columns p-2">
+        <div className="column has-background-info mx-2">
+          <A></A>
+        </div>
+        <div className="column has-background-info mx-2">
+          <B></B>
+        </div>
       </div>
+
       <div className="card p-4">
         <div className="columns">
           <div className="field column">
