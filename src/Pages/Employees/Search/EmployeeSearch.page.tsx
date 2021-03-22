@@ -1,11 +1,15 @@
 import React from "react";
-import EmployeeSearchForm from "./EmployeeSearchForm.comp";
+import { api } from "../../../utils";
 import EmployeeSearchTable from "./EmployeeSearchTable.comp";
+import EmployeeSearchTabs from "./EmployeeSearchTabs.comp";
+
+
+
+
 const List: React.FC = () => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
   return (
     <div>
-      <EmployeeSearchForm />
+      <EmployeeSearchTabs />
       <EmployeeSearchTable />
     </div>
   );

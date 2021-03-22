@@ -19,7 +19,7 @@ const LocationForm = () => {
   return (
     <div className="box">
       <h1 className="title has-text-centered">Location Data</h1>
-      <div className="columns is-multiline has-background-info-light" style={{ borderRadius: "12px" }}>
+      <div className="columns is-multiline" style={{ borderRadius: "12px" }}>
         <div className="column">
           <InputField label="City" name="city" onChange={handleState} />
         </div>

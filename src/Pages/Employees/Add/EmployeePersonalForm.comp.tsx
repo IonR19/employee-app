@@ -25,7 +25,7 @@ const PersonalForm = () => {
   return (
     <div className="box">
       <h1 className="title has-text-centered">Personal Data</h1>
-      <div className="columns is-multiline has-background-info-light" style={{ borderRadius: "12px" }}>
+      <div className="columns is-multiline has" style={{ borderRadius: "12px" }}>
         <div className="column is-4">
           <InputField
             label="Name"
