@@ -1,11 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { downloadEmployees, selectAllEmployees } from "../../../store/";
+import { fetchEmployees, selectAllEmployees, selectFilteredEmployees } from "../../../store/";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
+  const dispatch = useDispatch();
   React.useEffect(() => {
-    setTimeout(() => props.getEmployees(), 3000);
+    setTimeout(() => dispatch(fetchEmployees()), 3000);
   }, []);
 
   return (
@@ -46,11 +47,6 @@ const EmployeeSearchTable: React.FC = (props: any) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  employees: selectAllEmployees,
+  employees : selectFilteredEmployees as Function
 });
-
-const mapDispatchToProps = {
-  getEmployees: downloadEmployees,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeeSearchTable);
+export default connect(mapStateToProps)(EmployeeSearchTable);

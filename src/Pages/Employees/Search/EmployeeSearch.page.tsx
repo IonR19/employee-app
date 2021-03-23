@@ -1,5 +1,4 @@
 import React from "react";
-import { api } from "../../../utils";
 import EmployeeSearchTable from "./EmployeeSearchTable.comp";
 import EmployeeSearchTabs from "./EmployeeSearchTabs.comp";
 
