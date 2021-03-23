@@ -28,10 +28,7 @@ export interface IRemoveEmployee {
 
 export interface ISetFilter {
   type: ActionTypes.SET_FILTER;
-  payload: {
-    filter: keyof iFilter;
-    value: string;
-  };
+  payload: iFilter;
 }
 
 export const addEmployee = (formData: any) => {
@@ -55,13 +52,10 @@ export const fetchEmployees = (filter?: string) => async (dispatch: Dispatch) =>
   }
 };
 
-export const setFilter = (filter: keyof iFilter, value: string): ISetFilter => {
+export const setFilter = (filter: iFilter): ISetFilter => {
   return {
     type: ActionTypes.SET_FILTER,
-    payload: {
-      filter,
-      value,
-    },
+    payload: filter,
   };
 };
 /*

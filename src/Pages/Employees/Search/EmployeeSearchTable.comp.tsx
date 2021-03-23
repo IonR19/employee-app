@@ -1,7 +1,13 @@
 import React from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { fetchEmployees, selectAllEmployees, selectFilteredEmployees } from "../../../store/";
+import {
+  DefaultRootState,
+  fetchEmployees,
+  RootState,
+  selectAllEmployees,
+  selectFilteredEmployees,
+} from "../../../store/";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const dispatch = useDispatch();
@@ -46,7 +52,11 @@ const EmployeeSearchTable: React.FC = (props: any) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  employees : selectFilteredEmployees as Function
+const mapStateToProps = (state: RootState) => ({
+  employees: selectFilteredEmployees(state),
 });
+
+// const mapStateToProps = createStructuredSelector({
+//   employees : selectFilteredEmployees
+// });
 export default connect(mapStateToProps)(EmployeeSearchTable);

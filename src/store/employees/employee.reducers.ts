@@ -14,7 +14,7 @@ const initialState: IEmployeesReducer = {
 
   filters: {
     name: "",
-    civil_id: "275",
+    civil_id: "",
     file_no: "",
     phone: "",
     section: "",
@@ -31,14 +31,14 @@ const EmployeesReducer = produce((state: IEmployeesReducer = initialState, actio
       state.data[action.payload.id] = action.payload;
       return;
     case ActionTypes.REMOVE_USER:
-      delete state["data"][action.payload];
+      delete state.data[action.payload];
       return;
     case ActionTypes.SET_FILTER:
-      const { filter, value } = action.payload;
-      state.filters[filter] = value;
-      break;
+      state.filters = action.payload;
+      return;
+    default:
+      return state;
   }
-  return state;
 });
 
 export default EmployeesReducer;
