@@ -67,7 +67,7 @@ const EmployeeSearchForm: React.FC<EmployeeSearchFormProps> = ({ activeTab = 0 }
           <input
             className="input"
             type="number"
-            placeholder="00000"
+            placeholder="00000000"
             name="phone"
             onChange={handleChange}
           />
@@ -78,8 +78,7 @@ const EmployeeSearchForm: React.FC<EmployeeSearchFormProps> = ({ activeTab = 0 }
         <div className="control">
           <input
             className="input"
-            type="number"
-            placeholder="00000"
+            type="text"
             name="section"
             onChange={handleChange}
           />

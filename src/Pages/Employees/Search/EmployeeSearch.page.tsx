@@ -1,17 +1,17 @@
 import React from "react";
-import EmployeeSearchTable from "./EmployeeSearchTable.comp";
+import EmployeeSearchTableComp from "./EmployeeSearchTable.comp";
 import EmployeeSearchTabs from "./EmployeeSearchTabs.comp";
 
-
-
-
-const List: React.FC = () => {
+/**
+ * @todo useEffect Cancle and loading requests when leaving the page
+ */
+const EmployeeList: React.FC = () => {
   return (
     <div>
       <EmployeeSearchTabs />
-      <EmployeeSearchTable />
+      <EmployeeSearchTableComp />
     </div>
   );
 };
 
-export default List;
+export default EmployeeList;

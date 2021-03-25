@@ -1,5 +1,6 @@
 import React from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import {
   DefaultRootState,
@@ -7,7 +8,7 @@ import {
   RootState,
   selectAllEmployees,
   selectFilteredEmployees,
-} from "../../../store/";
+} from "../../../store";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const dispatch = useDispatch();
@@ -23,9 +24,9 @@ const EmployeeSearchTable: React.FC = (props: any) => {
             <th className="is-primary">Serial</th>
             <th className="is-primary">Name</th>
             <th className="is-primary">Civil ID</th>
-            <th className="is-primary">Phone</th>
-            <th className="is-primary">Email</th>
+            <th className="is-primary">File No</th>
             <th className="is-primary">Section</th>
+            <th className="is-primary">Level</th>
             <th className="is-primary">tools</th>
           </tr>
         </thead>
@@ -35,13 +36,13 @@ const EmployeeSearchTable: React.FC = (props: any) => {
               <td>{index + 1}</td>
               <td>{emp.name}</td>
               <td>{emp.civil_id}</td>
-              <td>99994444</td>
-              <td>email@mew.gov.kw</td>
+              <td>{emp.file_no}</td>
               <td>{emp.section}</td>
+              <td>{emp.level}</td>
               <td>
-                <a href={`/${emp.id}`} className="button">
+                <Link to={`/edit/${emp.id}`} className="button">
                   edit
-                </a>
+                </Link>
               </td>
             </tr>
           ))}
@@ -57,6 +58,8 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 // const mapStateToProps = createStructuredSelector({
-//   employees : selectFilteredEmployees
+//   employees : selectFilteredEmployees,
 // });
+
+
 export default connect(mapStateToProps)(EmployeeSearchTable);

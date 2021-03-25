@@ -1,17 +1,29 @@
 import React from "react";
-import { GenderOptions, MartialOptions, NationalityOption } from "../../../static/StaticOptions";
-import InputField from "../../../components/FormElements/InputField";
-import OptionInputField from "../../../components/FormElements/OptionInputField";
+import { GenderOptions, MartialOptions, NationalityOption } from "../../static/StaticOptions";
+import InputField from "../FormElements/InputField";
+import OptionInputField from "../FormElements/OptionInputField";
 
-const PersonalForm = () => {
+interface PersonalFormProps {
+  initialValues?: {
+    name: string;
+    civil_id: string;
+    gender: string;
+    nationality: string;
+    martial: string;
+    email: string;
+    mew_email: string;
+  };
+}
+
+const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
   const [value, setValue] = React.useState({
-    name: "",
-    civil_id: "",
-    gender: "",
-    nationality: "",
-    martial: "",
-    email: "",
-    mew_email: "",
+    name: initialValues?.name || "",
+    civil_id: initialValues?.civil_id || "",
+    gender: initialValues?.gender || "",
+    nationality: initialValues?.nationality || "",
+    martial: initialValues?.martial || "",
+    email: initialValues?.email || "",
+    mew_email: initialValues?.mew_email || "",
   });
   const { civil_id, email, gender, martial, mew_email, name, nationality } = value;
 
@@ -73,11 +85,11 @@ const PersonalForm = () => {
           />
         </div>
         <div className="column is-5">
-          <InputField label="eMail" name="email" type="mail" value={email} onChange={handleState} />
+          <InputField label="Email" name="email" type="mail" value={email} onChange={handleState} />
         </div>
         <div className="column is-5">
           <InputField
-            label="MEW eMail"
+            label="MEW Email"
             name="mew_email"
             type="email"
             value={mew_email}

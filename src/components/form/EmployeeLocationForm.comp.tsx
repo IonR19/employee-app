@@ -1,12 +1,20 @@
 import React from "react";
-import InputField from "../../../components/FormElements/InputField";
+import InputField from "../FormElements/InputField";
 
-const LocationForm = () => {
+interface LocationFormProps {
+  initialValues?: {
+    city: string;
+    block: string;
+    street: string;
+    house: string;
+  };
+}
+const LocationForm: React.FC<LocationFormProps> = ({ initialValues }) => {
   const [value, setValue] = React.useState({
-    city: "",
-    block: "",
-    street: "",
-    house: "",
+    city: initialValues?.city || "",
+    block: initialValues?.block || "",
+    street: initialValues?.street || "",
+    house: initialValues?.house || "",
   });
 
   const handleState = (e: any) => {

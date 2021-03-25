@@ -3,6 +3,7 @@ import { ActionTypes } from "./employee.actionTypes";
 import _ from "lodash";
 import { Dispatch } from "redux";
 import { IEmployee, iFilter } from "../../models";
+import { ThunkDispatch } from "redux-thunk";
 
 export interface IFetchEmployees {
   type: ActionTypes.FETCH_EMPLOYEES;
@@ -17,7 +18,7 @@ export interface IFetchEmployeesError {
 }
 
 export interface IAddEmployee {
-  type: ActionTypes.ADD_USER;
+  type: ActionTypes.ADD_EMPLOYEE;
   payload: IEmployee;
 }
 
@@ -30,12 +31,6 @@ export interface ISetFilter {
   type: ActionTypes.SET_FILTER;
   payload: iFilter;
 }
-
-export const addEmployee = (formData: any) => {
-  //add to server
-  //add locally?
-  //redirect to view ?
-};
 
 export const fetchEmployees = (filter?: string) => async (dispatch: Dispatch) => {
   try {
@@ -57,6 +52,29 @@ export const setFilter = (filter: iFilter): ISetFilter => {
     type: ActionTypes.SET_FILTER,
     payload: filter,
   };
+};
+
+export const addEmployee = (employee: IEmployee) => async (dispatch: Dispatch) => {
+  //redirect to view ?
+
+
+  // todo: if already started return to avoid double add ???
+
+  dispatch({
+    type: ActionTypes.START_EMP_ADD,
+  });
+  try {
+    const { data } = await api.post<IEmployee>("/employees", employee);
+    dispatch<IAddEmployee>({
+      type: ActionTypes.ADD_EMPLOYEE,
+      payload: data,
+    });
+  } catch (e: any) {
+    alert(`error adding employee!!! ${e.message}`);
+  }
+  dispatch({
+    type: ActionTypes.STOP_EMP_ADD,
+  });
 };
 /*
 let t = 0;

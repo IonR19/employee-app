@@ -1,17 +1,28 @@
 import React from "react";
-import { SectionOptions } from "../../../static/StaticOptions";
-import InputField from "../../../components/FormElements/InputField";
-import OptionInputField from "../../../components/FormElements/OptionInputField";
+import { SectionOptions } from "../../static/StaticOptions";
+import InputField from "../FormElements/InputField";
+import OptionInputField from "../FormElements/OptionInputField";
 
-const WorkForm = () => {
+interface WorkFormProps {
+  initialValues?: {
+    job_title: string;
+    education_level: string;
+    authority: string;
+    move_in: string;
+    hire_on: string;
+    years_exp: string;
+    section: string;
+  };
+}
+const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
   const [value, setValue] = React.useState({
-    job_title: "",
-    education_level: "",
-    authority: "",
-    move_in: "",
-    hire_on: "",
-    years_exp: "",
-    section: "",
+    job_title: initialValues?.job_title || "",
+    education_level: initialValues?.education_level || "",
+    authority: initialValues?.authority || "",
+    move_in: initialValues?.move_in || "",
+    hire_on: initialValues?.hire_on || "",
+    years_exp: initialValues?.years_exp || "",
+    section: initialValues?.section || "",
   });
   const { authority, education_level, hire_on, job_title, move_in, years_exp, section } = value;
 
