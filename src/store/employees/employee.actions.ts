@@ -1,9 +1,8 @@
 import { api } from "../../utils";
 import { ActionTypes } from "./employee.actionTypes";
-import _ from "lodash";
 import { Dispatch } from "redux";
 import { IEmployee, iFilter } from "../../models";
-import { ThunkDispatch } from "redux-thunk";
+import _ from "lodash";
 
 export interface IFetchEmployees {
   type: ActionTypes.FETCH_EMPLOYEES;
@@ -20,6 +19,20 @@ export interface IFetchEmployeesError {
 export interface IAddEmployee {
   type: ActionTypes.ADD_EMPLOYEE;
   payload: IEmployee;
+}
+
+export interface IAddEmployeeError {
+  type: ActionTypes.ADD_EMPLOYEE_ERR;
+  payload: string;
+}
+export interface IUpdateEmployee {
+  type: ActionTypes.UPDATE_EMPLOYEE;
+  payload: IEmployee;
+}
+
+export interface IUpdateEmployeeError {
+  type: ActionTypes.UPDATE_EMPLOYEE_ERR;
+  payload: string;
 }
 
 export interface IRemoveEmployee {
@@ -54,15 +67,29 @@ export const fetchEmployeesById = (id: string) => async (dispatch: Dispatch) => 
       payload: data,
     });
   } catch (err) {
-    dispatch<IFetchEmployeesError>({
-      type: ActionTypes.FETCH_EMPLOYEE_ERROR,
+    dispatch<IAddEmployeeError>({
+      type: ActionTypes.ADD_EMPLOYEE_ERR,
       payload: err.message,
     });
   }
 };
 
-
-
+export const updateEmployeeById = (id: string, emp: IEmployee) => async (dispatch: Dispatch) => {
+  try {
+    // const { data } = await api.patch<IEmployee>(`/employees/${id}`, emp);
+    console.log(emp);
+    
+    // dispatch<IUpdateEmployee>({
+    //   type: ActionTypes.UPDATE_EMPLOYEE,
+    //   payload: data,
+    // });
+  } catch (err) {
+    dispatch<IUpdateEmployeeError>({
+      type: ActionTypes.UPDATE_EMPLOYEE_ERR,
+      payload: err.message,
+    });
+  }
+};
 
 export const setFilter = (filter: iFilter): ISetFilter => {
   return {
@@ -73,7 +100,6 @@ export const setFilter = (filter: iFilter): ISetFilter => {
 
 export const addEmployee = (employee: IEmployee) => async (dispatch: Dispatch) => {
   //redirect to view ?
-
 
   // todo: if already started return to avoid double add ???
 

@@ -1,19 +1,13 @@
 import React from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { createStructuredSelector } from "reselect";
-import {
-  DefaultRootState,
-  fetchEmployees,
-  RootState,
-  selectAllEmployees,
-  selectFilteredEmployees,
-} from "../../../store";
+import { fetchEmployees, RootState, selectFilteredEmployees } from "../../../store";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const dispatch = useDispatch();
+
   React.useEffect(() => {
-    setTimeout(() => dispatch(fetchEmployees()), 3000);
+    dispatch(fetchEmployees());
   }, []);
 
   return (
@@ -56,10 +50,5 @@ const EmployeeSearchTable: React.FC = (props: any) => {
 const mapStateToProps = (state: RootState) => ({
   employees: selectFilteredEmployees(state),
 });
-
-// const mapStateToProps = createStructuredSelector({
-//   employees : selectFilteredEmployees,
-// });
-
 
 export default connect(mapStateToProps)(EmployeeSearchTable);
