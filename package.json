@@ -6,10 +6,11 @@
   "main": "index.js",
   "homepage": "https://ionr19.github.io/employee-app",
   "scripts": {
-    "start": "concurrently \"parcel ./public/index.html --target=serve\" \"json-server db.json\" ",
+    "start": "concurrently npm:dev npm:serve",
     "build": "parcel build public/index.html --no-source-maps --no-cache --public-url=./ --target=default ",
-    "serve": "json-server --watch db.json --routes routes.json",
-    "predeploy": "npm run build",
+    "dev": "parcel ./public/index.html --target=serve",
+    "serve": "json-server --watch db.json",
+    "predeploy": "rmdir build /q /s && npm run build",
     "deploy": "gh-pages -d build",
     "test": ""
   },
@@ -17,7 +18,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-nightly.628",
     "@types/react-dom": "^17.0.2",
     "@types/redux-logger": "^3.0.8",
     "cssnano": "^4.1.10",
@@ -27,6 +27,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@parcel/transformer-sass": "^2.0.0-nightly.633",
     "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.3",
     "@types/react-redux": "^7.1.16",
