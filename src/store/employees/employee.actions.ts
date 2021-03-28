@@ -46,6 +46,23 @@ export const fetchEmployees = (filter?: string) => async (dispatch: Dispatch) =>
     });
   }
 };
+export const fetchEmployeesById = (id: string) => async (dispatch: Dispatch) => {
+  try {
+    const { data } = await api.get<IEmployee>(`/employees/${id}`);
+    dispatch<IAddEmployee>({
+      type: ActionTypes.ADD_EMPLOYEE,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch<IFetchEmployeesError>({
+      type: ActionTypes.FETCH_EMPLOYEE_ERROR,
+      payload: err.message,
+    });
+  }
+};
+
+
+
 
 export const setFilter = (filter: iFilter): ISetFilter => {
   return {

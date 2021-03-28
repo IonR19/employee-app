@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GenderOptions, MartialOptions, NationalityOption } from "../../static/StaticOptions";
 import InputField from "../FormElements/InputField";
 import OptionInputField from "../FormElements/OptionInputField";
@@ -17,14 +17,26 @@ interface PersonalFormProps {
 
 const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
   const [value, setValue] = React.useState({
-    name: initialValues?.name || "",
-    civil_id: initialValues?.civil_id || "",
-    gender: initialValues?.gender || "",
-    nationality: initialValues?.nationality || "",
-    martial: initialValues?.martial || "",
-    email: initialValues?.email || "",
-    mew_email: initialValues?.mew_email || "",
+    name: "",
+    civil_id: "",
+    gender: "",
+    nationality: "",
+    martial: "",
+    email: "",
+    mew_email: "",
   });
+  React.useEffect(() => {
+    setValue({
+      ...value,
+      name: initialValues?.name || "",
+      civil_id: initialValues?.civil_id || "",
+      gender: initialValues?.gender || "",
+      nationality: initialValues?.nationality || "",
+      martial: initialValues?.martial || "",
+      email: initialValues?.email || "",
+      mew_email  : initialValues?.mew_email || "",
+    })
+  },[ initialValues])
   const { civil_id, email, gender, martial, mew_email, name, nationality } = value;
 
   const handleState = (e: any) => {

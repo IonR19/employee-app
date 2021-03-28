@@ -14,9 +14,14 @@ export const selectAllEmployees = createSelector([employees], (empObject) => {
 export const selectFilteredEmployees = createSelector([employees, filters], (employees, filters) => {
   let ids: string[] = Object.keys(employees);
 
-  console.log(filters)
   ids = ids.filter((id) => {
     return employees[id].civil_id.includes(filters.civil_id);
   });
   return ids.map((id) => employees[id]);
+});
+
+const selectId = (state: RootState, id: string) => id;
+
+export const selectEmployeeById = createSelector([employees, selectId], (employees, id) => {
+  return employees[id];
 });

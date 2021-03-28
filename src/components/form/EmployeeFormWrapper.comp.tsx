@@ -15,11 +15,12 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
 
   const handleSubmit: React.FormEventHandler<EventTarget> = (e) => {
     e.preventDefault();
-    const Employee = {
-      ...[...formRef.current?.elements].map((el: any) => {
-        return { [el.name]: el.value };
-      }),
-    };
+    let Employee = {};
+    if (formRef.current) {
+      Employee = {
+        ...[...formRef.current!.elements].map(({ name, value }: any) => ({ [name]: value })),
+      };
+    }
 
     onSubmit(Employee);
   };

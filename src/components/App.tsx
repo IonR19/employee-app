@@ -3,7 +3,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import EmployeeAdd from "../pages/employees/add/EmployeeAdd.page";
 import Navbar from "./Navbar/Navbar";
 import EmployeeList from "../pages/employees/search/EmployeeSearch.page";
-import EmployeeEdit from "../pages/employees/edit/EmployeeEdit.page";
+import EmployeeEdit from "../pages/Employees/edit/EmployeeEdit.page";
+
+
 export default function App() {
   return (
     <BrowserRouter>

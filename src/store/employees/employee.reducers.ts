@@ -27,7 +27,7 @@ const EmployeesReducer = produce((state: IEmployeesReducer = initialState, actio
       action;
       state.data = action.payload;
       return;
-    case ActionTypes.ADD_USER:
+    case ActionTypes.ADD_EMPLOYEE:
       state.data[action.payload.id] = action.payload;
       return;
     case ActionTypes.REMOVE_USER:
