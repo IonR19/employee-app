@@ -76,13 +76,13 @@ export const fetchEmployeesById = (id: string) => async (dispatch: Dispatch) => 
 
 export const updateEmployeeById = (id: string, emp: IEmployee) => async (dispatch: Dispatch) => {
   try {
-    // const { data } = await api.patch<IEmployee>(`/employees/${id}`, emp);
-    console.log(emp);
+    const { data } = await api.patch<IEmployee>(`/employees/${id}`, emp);
+    console.log(data);
     
-    // dispatch<IUpdateEmployee>({
-    //   type: ActionTypes.UPDATE_EMPLOYEE,
-    //   payload: data,
-    // });
+    dispatch<IUpdateEmployee>({
+      type: ActionTypes.UPDATE_EMPLOYEE,
+      payload: data,
+    });
   } catch (err) {
     dispatch<IUpdateEmployeeError>({
       type: ActionTypes.UPDATE_EMPLOYEE_ERR,

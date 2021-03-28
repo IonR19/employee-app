@@ -461,13 +461,26 @@
       "civil_id": "280070601396",
       "name": "عبد الله بشير مطلق الشمرى",
       "certificate": "متوسطة بدورة سنتان فأكثر/الخدمات/اجهزة القياس والتحكم",
-      "hire_on": "38921",
+      "hire_on": "",
       "work_on": "38921",
       "job_title": "فني ثان الكترونات/ قياس وتحكم",
       "file_no": "32524",
       "level": "كادر عام / وظائف عامة / الرابعة",
-      "section": "قسم الطوارئ_الجهراء_ادارة شبكات التوزيع الكهربائية",
-      "work": "الجهراء"
+      "section": "",
+      "work": "الجهراء",
+      "gender": "Male",
+      "nationality": "Kuwaiti",
+      "martial": "",
+      "email": "",
+      "mew_email": "",
+      "education_level": "",
+      "authority": "",
+      "move_in": "",
+      "years_exp": "",
+      "city": "",
+      "block": "",
+      "street": "",
+      "house": ""
     },
     {
       "id": "37",
@@ -33995,6 +34008,27 @@
       "level": "كادر عام / وظائف عامة / السابعة",
       "section": "اداره شبكات التوزيع الكهربائيه",
       "work": "الإدارة"
+    },
+    {
+      "name": "test",
+      "civil_id": "296012400648",
+      "gender": "Male",
+      "nationality": "Afghan",
+      "martial": "Single",
+      "email": "yoyo@mew.gov.kw",
+      "mew_email": "whatamail@mew.gov.kw",
+      "job_title": "",
+      "education_level": "",
+      "authority": "",
+      "move_in": "",
+      "hire_on": "",
+      "years_exp": "",
+      "section": "",
+      "city": "Hawalli",
+      "block": "",
+      "street": "",
+      "house": "",
+      "id": "6FCTqFx"
     }
   ]
 }

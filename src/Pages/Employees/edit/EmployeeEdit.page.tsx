@@ -8,21 +8,20 @@ import EmployeeEditNav from "./EmployeeEditNav.comp";
 
 interface EmployeeEditProps extends inferedFromRedux {}
 
-const EmployeeEdit: React.FC<RouteComponentProps<{ id: string }> & EmployeeEditProps> = (props) => {
-  const {
-    match: {
-      params: { id },
-    },
-    getEmployee,
-    employee,
-  } = props;
-
+const EmployeeEdit: React.FC<RouteComponentProps<{ id: string }> & EmployeeEditProps> = ({
+  match: {
+    params: { id },
+  },
+  getEmployee,
+  updateEmployee,
+  employee,
+}) => {
   React.useEffect(() => {
     getEmployee(id);
   }, [id]);
 
   const onSubmit = (e: IEmployee) => {
-    props.updateEmployee(id, e);
+    updateEmployee(id, e);
   };
 
   return (
@@ -36,7 +35,7 @@ const EmployeeEdit: React.FC<RouteComponentProps<{ id: string }> & EmployeeEditP
       {employee && <EmployeeFormWrapper initialValues={employee} type="update" onSubmit={onSubmit} />}
       {!employee && (
         <div className="card">
-          <h1>Not Found !</h1>
+          <h1>Loading...</h1>
         </div>
       )}
     </div>
