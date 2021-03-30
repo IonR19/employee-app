@@ -32,12 +32,12 @@ const EmployeeEdit: React.FC<RouteComponentProps<{ id: string }> & EmployeeEditP
         </div>
         <EmployeeEditNav id={id} />
       </div>
-      {employee && <EmployeeFormWrapper initialValues={employee} type="update" onSubmit={onSubmit} />}
       {!employee && (
         <div className="card">
           <h1>Loading...</h1>
         </div>
       )}
+      {<EmployeeFormWrapper initialValues={employee} type="update" onSubmit={onSubmit} />}
     </div>
   );
 };
