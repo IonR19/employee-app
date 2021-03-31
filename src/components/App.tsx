@@ -6,6 +6,8 @@ import EmployeeList from "../pages/employees/search/EmployeeSearch.page";
 import EmployeeEdit from "../pages/employees/edit/EmployeeEdit.page";
 import EmployeeVacation from "../pages/employees/vacation/EmployeeVacation.page";
 
+import './App.scss'
+
 export default function App() {
   return (
     <BrowserRouter>
