@@ -6,9 +6,10 @@
   "main": "index.js",
   "homepage": "https://ionr19.github.io/employee-app",
   "scripts": {
-    "start": "concurrently \"parcel ./public/index.html\" \"json-server db.json\" ",
+    "start": "concurrently npm:dev npm:serve",
     "build": "parcel build public/index.html --no-source-maps --no-cache --public-url=./ --target=default ",
-    "serve": "json-server --watch db.json --routes routes.json",
+    "dev": "parcel ./public/index.html --target=serve",
+    "serve": "json-server --watch db.json",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": ""
@@ -41,11 +42,19 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "regenerator-runtime": "^0.13.7"
+    "regenerator-runtime": "^0.13.7",
+    "reselect": "^4.0.0"
   },
   "targets": {
     "default": {
       "distDir": "build"
+    },
+    "serve": {
+      "distDir": "dist",
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
     }
   }
 }

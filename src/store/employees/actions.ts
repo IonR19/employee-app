@@ -1,10 +1,14 @@
 import { ActionTypes } from "./actionTypes";
-export const addEmployee = (formData: any) => {
+export const addEmployee = (data: string) => {
   return {
     type: ActionTypes.ADD_USER,
-    payload: formData,
+    payload: data,
   };
-  //add to server
-  //add locally?
-  //redirect to view ?
+};
+
+export const removeEmployee = (data: string) => {
+  return {
+    type: ActionTypes.REMOVE_USER,
+    payload: data,
+  };
 };
