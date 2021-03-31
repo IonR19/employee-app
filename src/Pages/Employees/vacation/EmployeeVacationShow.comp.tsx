@@ -1,23 +1,21 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
+import {} from "reselect";
 import { RootState, selectFilteredEmployees } from "../../../store";
+interface EmployeeVacationShowProps {}
 
-interface Props {}
+const EmployeeVacationShow: React.FC<EmployeeVacationShowProps> = (props) => {
+  const employees = useSelector(selectFilteredEmployees);
 
-const EmployeeVacationShow = (props: EmployeeVacationShowProps) => {
-  
-  
   return (
-    <div>
-      <ul></ul>
+    <div className="box">
+      <ul>
+        {employees.map((emp) => (
+          <li key={emp.civil_id}>{JSON.stringify(emp)}</li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-const mapStateToProps = (state: RootState) => ({
-  employees: selectFilteredEmployees(state),
-});
-
-const connector = connect(mapStateToProps);
-type EmployeeVacationShowProps = typeof connector;
-export default connect(mapStateToProps)(EmployeeVacationShow);
+export default EmployeeVacationShow;
