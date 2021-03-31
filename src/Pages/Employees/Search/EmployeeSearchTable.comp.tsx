@@ -5,11 +5,6 @@ import { fetchEmployees, RootState, selectFilteredEmployees } from "../../../sto
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch(fetchEmployees());
-  }, []);
-
   return (
     <div className="box p-4 " style={{ minHeight: "100vh" }}>
       <table className="table is-hoverable is-fullwidth is-striped is-bordered">
