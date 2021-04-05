@@ -8,11 +8,6 @@ import EmployeeSearchTabs from "./EmployeeSearchTabs.comp";
  * @todo useEffect Cancle and loading requests when leaving the page
  */
 const EmployeeList: React.FC = () => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchEmployees());
-  }, []);
-
   return (
     <div>
       <EmployeeSearchTabs />

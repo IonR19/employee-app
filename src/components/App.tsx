@@ -6,9 +6,16 @@ import EmployeeList from "../pages/employees/search/EmployeeSearch.page";
 import EmployeeEdit from "../pages/employees/edit/EmployeeEdit.page";
 import EmployeeVacation from "../pages/employees/vacation/EmployeeVacation.page";
 
-import './App.scss'
+import "./App.scss";
+import { useDispatch } from "react-redux";
+import { fetchEmployees } from "../store";
 
 export default function App() {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(fetchEmployees());
+  });
+
   return (
     <BrowserRouter>
       <Navbar />

@@ -1,10 +1,10 @@
 import React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchEmployees, RootState, selectFilteredEmployees } from "../../../store";
+import { selectFilteredEmployees } from "../../../store";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
-  const dispatch = useDispatch();
+  const employees = useSelector(selectFilteredEmployees);
   return (
     <div className="box p-4 " style={{ minHeight: "100vh" }}>
       <table className="table is-hoverable is-fullwidth is-striped is-bordered">
@@ -20,7 +20,7 @@ const EmployeeSearchTable: React.FC = (props: any) => {
           </tr>
         </thead>
         <tbody>
-          {props.employees.map((emp: any, index: number) => (
+          {employees.map((emp: any, index: number) => (
             <tr key={emp.id}>
               <td>{index + 1}</td>
               <td>{emp.name}</td>
@@ -42,8 +42,4 @@ const EmployeeSearchTable: React.FC = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => ({
-  employees: selectFilteredEmployees(state),
-});
-
-export default connect(mapStateToProps)(EmployeeSearchTable);
+export default EmployeeSearchTable;
