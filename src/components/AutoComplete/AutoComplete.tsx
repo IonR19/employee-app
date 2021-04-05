@@ -1,9 +1,9 @@
 import React from "react";
 
 interface Props {
-  label: string;
+  label?: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   data: string[];
 }
 

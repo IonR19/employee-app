@@ -47,7 +47,7 @@ export interface ISetFilter {
 
 export const fetchEmployees = (filter?: string) => async (dispatch: Dispatch) => {
   try {
-    const { data } = await api.get("/employees", { params: { _limit: 30 } });
+    const { data } = await api.get("/employees", { params: { _limit: 100 } });
     dispatch<IFetchEmployees>({
       type: ActionTypes.FETCH_EMPLOYEES,
       payload: _.mapKeys(data, "id"),

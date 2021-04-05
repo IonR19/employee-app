@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Autocomplete from "../../../components/AutoComplete/AutoComplete";
 import { selectFilteredEmployees, setFilter } from "../../../store";
 
 interface EmployeeVacationFilterProps {}
@@ -23,7 +24,12 @@ const EmployeeVacationFilter = (props: EmployeeVacationFilterProps) => {
     <div className="box">
       <div className="columns">
         <div className="column is-3">
-          <div className="dropdown">
+          <Autocomplete
+            name="civil_id"
+            data={employees.map((e) => e.civilId)}
+            label="Civil ID"
+          />
+          {/* <div className="dropdown">
             <label className="label" htmlFor="civil_id">
               civil id
             </label>
@@ -44,7 +50,7 @@ const EmployeeVacationFilter = (props: EmployeeVacationFilterProps) => {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
