@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Autocomplete from "../../../components/AutoComplete/AutoComplete";
+import Autocomplete from "./EmployeeFilterAutoComplete.comp";
 import { selectFilteredEmployees, setFilter } from "../../../store";
 
 interface EmployeeVacationFilterProps {}
@@ -10,6 +10,7 @@ const EmployeeVacationFilter = (props: EmployeeVacationFilterProps) => {
   const [civilId, setCivilId] = React.useState("");
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    
     setCivilId(e.target.value);
     dispatch(
       setFilter({
@@ -26,31 +27,10 @@ const EmployeeVacationFilter = (props: EmployeeVacationFilterProps) => {
         <div className="column is-3">
           <Autocomplete
             name="civil_id"
-            data={employees.map((e) => e.civilId)}
+            data={employees.map((e) => e.civil_id)}
             label="Civil ID"
+            onSelect={handleChange}
           />
-          {/* <div className="dropdown">
-            <label className="label" htmlFor="civil_id">
-              civil id
-            </label>
-            <input
-              className="input"
-              type="number"
-              name="civil_id"
-              id="civil_id"
-              value={civilId}
-              onChange={handleChange}
-            />
-            {employees.length && (
-              <div className="dropdown">
-                <div className="dropdown-content is-active">
-                  {employees.slice(0, Math.max(10, employees.length)).map((emp) => (
-                    <a className="dropdown-item">{emp.civil_id}</a>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div> */}
         </div>
       </div>
     </div>
