@@ -5,6 +5,7 @@ interface Props {
   name: string;
   placeholder?: string;
   data: string[];
+  limit?: number;
 }
 
 interface State {
@@ -24,10 +25,6 @@ class Autocomplete extends React.Component<Props, State> {
       query: "",
       selected: false,
     };
-
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
-    // this.handleSelection = this.handleSelection.bind(this);
-    // this.updateQuery = this.updateQuery.bind(this);
   }
 
   handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
@@ -46,12 +43,12 @@ class Autocomplete extends React.Component<Props, State> {
         break;
       case 38: // Up arrow
         this.setState({
-          activeIndex: activeIndex >= 1 ? activeIndex - 1 : 0,
+          activeIndex: (activeIndex - 1 + matches.length) % matches.length,
         });
         break;
       case 40: // Down arrow
         this.setState({
-          activeIndex: activeIndex < matches.length - 1 ? activeIndex + 1 : matches.length - 1,
+          activeIndex: (activeIndex + 1) % matches.length,
         });
         break;
       default:
@@ -71,15 +68,13 @@ class Autocomplete extends React.Component<Props, State> {
   };
 
   updateQuery: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { data } = this.props;
-
+    const { data, limit = 5 } = this.props;
     if (!this.state.selected) {
       const query = e.target.value;
       this.setState({
-        matches:
-          query.length >= 2
-            ? data.filter((item) => item.toUpperCase().indexOf(query.toUpperCase()) >= 0)
-            : [],
+        matches: data
+          .filter((item) => item.toUpperCase().indexOf(query.toUpperCase()) >= 0)
+          .slice(0, limit),
         query,
       });
     } else {
@@ -97,7 +92,6 @@ class Autocomplete extends React.Component<Props, State> {
   render() {
     const { label, name, placeholder } = this.props;
     const { activeIndex, matches, query } = this.state;
-
     return (
       <div className="field">
         {label && <label className="label">{label}</label>}
