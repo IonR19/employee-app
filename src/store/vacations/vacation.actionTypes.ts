@@ -3,6 +3,8 @@ import {
   IAddVacationError,
   IAddVacationSuccess,
   IRemoveVacation,
+  IRemoveVacationError,
+  IRemoveVacationSuccess,
 } from "./vacation.actions";
 
 export enum ActionTypes {
@@ -17,4 +19,10 @@ export enum ActionTypes {
   REMOVE_VACATION_ERROR = "REMOVE_VACATION_ERROR",
 }
 
-export type IVacationActions = IAddVacation | IAddVacationSuccess | IAddVacationError | IRemoveVacation;
+export type IVacationActions =
+  | IAddVacation
+  | IAddVacationSuccess
+  | IAddVacationError
+  | IRemoveVacation
+  | IRemoveVacationSuccess
+  | IRemoveVacationError;
