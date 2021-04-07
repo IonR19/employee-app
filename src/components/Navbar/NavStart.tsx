@@ -6,6 +6,7 @@ const NavStart = () => {
       <NavbarElement url="/">View</NavbarElement>
       <NavbarElement url="/add">Add</NavbarElement>
       <NavbarElement url="/vacations">Vacations</NavbarElement>
+      <NavbarElement url="/vacation">Vacation Tools</NavbarElement>
     </div>
   );
 };
