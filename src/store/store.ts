@@ -6,11 +6,11 @@ import VacationReducer from "./vacations/vacation.reducers";
 
 const reducers = combineReducers({
   employees: employeeReducers,
-  vacations: VacationReducer
+  vacations: VacationReducer,
 });
 
 const middlewares = [redux_logger, reduxThunk];
 
 export const store = createStore(reducers, applyMiddleware(...middlewares));
 export type RootState = ReturnType<typeof reducers>;
-export type DefaultRootState = ReturnType<typeof reducers>;
+export type DefaultRootState = RootState;
