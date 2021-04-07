@@ -1,19 +1,18 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { fetchEmployees } from "../../../store";
+import React, { Fragment } from "react";
 import EmployeeSearchTableComp from "./EmployeeSearchTable.comp";
 import EmployeeSearchTabs from "./EmployeeSearchTabs.comp";
 
 /**
  * @todo useEffect Cancle and loading requests when leaving the page
  */
-const EmployeeList: React.FC = () => {
+
+const EmployeeSearch: React.FC = () => {
   return (
-    <div>
+    <Fragment>
       <EmployeeSearchTabs />
       <EmployeeSearchTableComp />
-    </div>
+    </Fragment>
   );
 };
 
-export default EmployeeList;
+export default EmployeeSearch;

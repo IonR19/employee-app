@@ -7,7 +7,7 @@ interface EmployeeSearchFormProps {
   activeTab?: number;
 }
 
-const EmployeeSearchForm: React.FC<EmployeeSearchFormProps> = ({ activeTab = 0 }) => {
+const EmployeeProfileSearch: React.FC<EmployeeSearchFormProps> = ({ activeTab = 0 }) => {
   const dispatch = useDispatch();
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -88,4 +88,4 @@ const EmployeeSearchForm: React.FC<EmployeeSearchFormProps> = ({ activeTab = 0 }
   );
 };
 
-export default EmployeeSearchForm;
+export default EmployeeProfileSearch;

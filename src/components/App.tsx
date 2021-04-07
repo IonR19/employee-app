@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import EmployeeAdd from "../pages/employees/add/EmployeeAdd.page";
+import EmployeeAdd from "../pages/People/add/EmployeeAdd.page";
 import Navbar from "./Navbar/Navbar";
-import EmployeeList from "../pages/employees/search/EmployeeSearch.page";
-import EmployeeEdit from "../pages/employees/edit/EmployeeEdit.page";
-import EmployeeVacation from "../pages/employees/vacation/EmployeeVacation.page";
+import EmployeeSearch from "../pages/People/search/EmployeeSearch.page";
+import EmployeeEdit from "../pages/People/edit/EmployeeEdit.page";
+import EmployeeVacation from "../pages/People/vacation/EmployeeVacation.page";
 
 import "./App.scss";
 import { useDispatch } from "react-redux";
@@ -25,7 +25,7 @@ export default function App() {
             <Route path="/vacations" component={EmployeeVacation} />
             <Route path="/edit/:id" component={EmployeeEdit} />
             <Route path="/add" component={EmployeeAdd} />
-            <Route path="/" exact component={EmployeeList} />
+            <Route path="/" exact component={EmployeeSearch} />
           </Switch>
         </div>
       </div>
