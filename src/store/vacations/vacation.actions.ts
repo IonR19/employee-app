@@ -1,7 +1,7 @@
 import { api } from "../../utils";
 import { ActionTypes } from "./vacation.actionTypes";
 import { Dispatch } from "redux";
-import { IEmployee, iFilter } from "../../models";
+import { IVacation } from "../../models";
 import _ from "lodash";
 
 export interface IAddVacation {
@@ -10,7 +10,7 @@ export interface IAddVacation {
 
 export interface IAddVacationSuccess {
   type: ActionTypes.ADD_VACATION_SUCCESS;
-  payload: string;
+  payload: IVacation;
 }
 
 export interface IAddVacationError {
@@ -56,7 +56,7 @@ export const removeVacation = (id: string) => async (dispatch: Dispatch) => {
     type: ActionTypes.REMOVE_VACATION,
   });
   try {
-    await api.delete<IEmployee>(`/vacation/${id}`);
+    await api.delete<IVacation>(`/vacation/${id}`);
     dispatch<IRemoveVacationSuccess>({
       type: ActionTypes.REMOVE_VACATION_SUCCESS,
       payload: id, //includes id
@@ -75,7 +75,7 @@ export interface IFetchVacation {
 
 export interface IFetchVacationSuccess {
   type: ActionTypes.FETCH_VACATIONS_SUCCESS;
-  payload: string;
+  payload: IVacation[];
 }
 
 export interface IFetchVacationError {
@@ -88,85 +88,15 @@ export const fetchVacations = () => async (dispatch: Dispatch) => {
     type: ActionTypes.FETCH_VACATIONS,
   });
   try {
-    const { data } = await api.get("/vacations");
-    dispatch({
+    const { data } = await api.get<IVacation[]>("/vacations");
+    dispatch<IFetchVacationSuccess>({
       type: ActionTypes.FETCH_VACATIONS_SUCCESS,
+      payload: data,
     });
   } catch (e) {
-    dispatch({
+    dispatch<IFetchVacationError>({
       type: ActionTypes.FETCH_VACATIONS_ERROR,
       payload: e.message,
     });
   }
 };
-
-// export const fetchEmployees = (filter?: string) => async (dispatch: Dispatch) => {
-//   try {
-//     const { data } = await api.get("/employees", { params: { _limit: 100 } });
-//     dispatch<IFetchEmployees>({
-//       type: ActionTypes.FETCH_EMPLOYEES,
-//       payload: _.mapKeys(data, "id"),
-//     });
-//   } catch (err) {
-//     dispatch<IFetchEmployeesError>({
-//       type: ActionTypes.FETCH_EMPLOYEE_ERROR,
-//       payload: err.message,
-//     });
-//   }
-// };
-// export const fetchEmployeesById = (id: string) => async (dispatch: Dispatch) => {
-//   try {
-//     const { data } = await api.get<IEmployee>(`/employees/${id}`);
-//     dispatch<IAddEmployee>({
-//       type: ActionTypes.ADD_EMPLOYEE,
-//       payload: data,
-//     });
-//   } catch (err) {
-//     dispatch<IAddEmployeeError>({
-//       type: ActionTypes.ADD_EMPLOYEE_ERR,
-//       payload: err.message,
-//     });
-//   }
-// };
-
-// export const updateEmployeeById = (id: string, emp: IEmployee) => async (dispatch: Dispatch) => {
-//   try {
-//     const { data } = await api.patch<IEmployee>(`/employees/${id}`, emp);
-//     console.log(data);
-
-//     dispatch<IUpdateEmployee>({
-//       type: ActionTypes.UPDATE_EMPLOYEE,
-//       payload: data,
-//     });
-//   } catch (err) {
-//     dispatch<IUpdateEmployeeError>({
-//       type: ActionTypes.UPDATE_EMPLOYEE_ERR,
-//       payload: err.message,
-//     });
-//   }
-// };
-
-// export const setFilter = (filter: iFilter): ISetFilter => {
-//   return {
-//     type: ActionTypes.SET_FILTER,
-//     payload: filter,
-//   };
-// };
-
-/*
-let t = 0;
-export const setLateFilter = (filter: keyof iFilter, value: string) => (dispatch: Dispatch) => {
-  if (t) {
-    clearTimeout(t);
-  }
-  t = setTimeout(() => {
-    dispatch<ISetFilter>({
-      type: ActionTypes.SET_FILTER,
-      payload: {
-        filter,
-        value,
-      },
-    });
-  }, 1500);
-};
-*/

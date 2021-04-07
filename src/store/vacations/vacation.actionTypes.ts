@@ -2,6 +2,9 @@ import {
   IAddVacation,
   IAddVacationError,
   IAddVacationSuccess,
+  IFetchVacation,
+  IFetchVacationError,
+  IFetchVacationSuccess,
   IRemoveVacation,
   IRemoveVacationError,
   IRemoveVacationSuccess,
@@ -25,4 +28,7 @@ export type IVacationActions =
   | IAddVacationError
   | IRemoveVacation
   | IRemoveVacationSuccess
-  | IRemoveVacationError;
+  | IRemoveVacationError
+  | IFetchVacation
+  | IFetchVacationSuccess
+  | IFetchVacationError;
