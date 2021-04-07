@@ -1,6 +1,6 @@
 import produce from "immer";
 import { IVacation } from "../../models";
-import { ActionTypes, IVacationActions } from "./vacation.actionTypes";
+import { ActionTypes, IVacationActions } from "./vacation.types";
 
 type VacationsStore = {
   [id: string]: IVacation;

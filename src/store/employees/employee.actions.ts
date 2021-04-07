@@ -1,5 +1,5 @@
 import { api } from "../../utils";
-import { ActionTypes } from "./employee.actionTypes";
+import { ActionTypes } from "./employee.types";
 import { Dispatch } from "redux";
 import { IEmployee, iFilter } from "../../models";
 import _ from "lodash";

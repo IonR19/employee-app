@@ -1,5 +1,5 @@
 import { api } from "../../utils";
-import { ActionTypes } from "./vacation.actionTypes";
+import { ActionTypes } from "./vacation.types";
 import { Dispatch } from "redux";
 import { IVacation } from "../../models";
 import _ from "lodash";

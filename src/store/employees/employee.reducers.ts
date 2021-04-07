@@ -1,6 +1,6 @@
 import produce from "immer";
 import { IEmployee, iFilter } from "../../models";
-import { ActionTypes, IEmployeeActions } from "./employee.actionTypes";
+import { ActionTypes, IEmployeeActions } from "./employee.types";
 
 export interface IEmployeesReducer {
   data: {
