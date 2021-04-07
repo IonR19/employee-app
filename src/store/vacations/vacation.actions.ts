@@ -70,21 +70,21 @@ export const removeVacation = (id: string) => async (dispatch: Dispatch) => {
 };
 
 export interface IFetchVacation {
-  type: ActionTypes.REMOVE_VACATION;
+  type: ActionTypes.FETCH_VACATIONS;
 }
 
 export interface IFetchVacationSuccess {
-  type: ActionTypes.REMOVE_VACATION_SUCCESS;
+  type: ActionTypes.FETCH_VACATIONS_SUCCESS;
   payload: string;
 }
 
 export interface IFetchVacationError {
-  type: ActionTypes.REMOVE_VACATION_ERROR;
+  type: ActionTypes.FETCH_VACATIONS_ERROR;
   payload?: string;
 }
 
 export const fetchVacations = () => async (dispatch: Dispatch) => {
-  dispatch({
+  dispatch<IFetchVacation>({
     type: ActionTypes.FETCH_VACATIONS,
   });
   try {
