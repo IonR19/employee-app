@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import EmployeeSearchTableComp from "./EmployeeSearchTable.comp";
+import EmployeeSearchTable from "./EmployeeSearchTable.comp";
 import EmployeeSearchTabs from "./EmployeeSearchTabs.comp";
 
 /**
@@ -10,7 +10,7 @@ const EmployeeSearch: React.FC = () => {
   return (
     <Fragment>
       <EmployeeSearchTabs />
-      <EmployeeSearchTableComp />
+      <EmployeeSearchTable />
     </Fragment>
   );
 };
