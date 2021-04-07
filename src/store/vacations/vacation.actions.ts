@@ -24,7 +24,7 @@ export const addVacation = (vacation: string) => async (dispatch: Dispatch) => {
   });
 
   try {
-    const { data } = await api.post("/vacation", vacation);
+    const { data } = await api.post("/vacations", { name: vacation });
     dispatch<IAddVacationSuccess>({
       type: ActionTypes.ADD_VACATION_SUCCESS,
       payload: data, //includes id
@@ -56,7 +56,7 @@ export const removeVacation = (id: string) => async (dispatch: Dispatch) => {
     type: ActionTypes.REMOVE_VACATION,
   });
   try {
-    await api.delete<IVacation>(`/vacation/${id}`);
+    await api.delete<IVacation>(`/vacations/${id}`);
     dispatch<IRemoveVacationSuccess>({
       type: ActionTypes.REMOVE_VACATION_SUCCESS,
       payload: id, //includes id
