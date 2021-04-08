@@ -30,17 +30,19 @@ class Autocomplete extends React.Component<Props, State> {
 
   handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { activeIndex, matches } = this.state;
-
+    
     switch (event.which) {
       case 13: // Enter key
-        if (matches.length) {
-          this.setState({
-            activeIndex: 0,
-            matches: [],
-            query: matches[activeIndex],
-            selected: true,
-          });
-        }
+      if (matches.length) {
+        this.setState({
+          activeIndex: 0,
+          matches: [],
+          query: matches[activeIndex],
+          selected: true,
+        }, () => {
+          this.props.onSelect(this.state.query);
+        });
+      }
         break;
       case 38: // Up arrow
         this.setState({
@@ -58,22 +60,23 @@ class Autocomplete extends React.Component<Props, State> {
   };
 
   handleSelection = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, selection: string) => {
-    const { onSelect } = this.props;
     event.preventDefault();
-
+    
     this.setState({
       activeIndex: 0,
       query: selection,
       matches: [],
       selected: true,
+    }, () => {
+      this.props.onSelect(this.state.query);
     });
-    onSelect(selection);
   };
 
   updateQuery: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { data, limit = 5 } = this.props;
+    const { data, onSelect, limit = 5 } = this.props;
     if (!this.state.selected) {
       const query = e.target.value;
+      onSelect(query)
       this.setState({
         matches: data
           .filter((item) => item.toUpperCase().indexOf(query.toUpperCase()) >= 0)
@@ -107,6 +110,7 @@ class Autocomplete extends React.Component<Props, State> {
             <div className="dropdown-trigger">
               <input
                 type="text"
+                autoComplete="off"
                 className="input"
                 name={name}
                 value={query}

@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { createSelector } from "reselect";
 import { iFilter } from "../../models";
 import { RootState } from "../store";
@@ -38,4 +39,8 @@ const selectId = (state: RootState, id: string) => id;
 
 export const selectEmployeeById = createSelector([employees, selectId], (employees, id) => {
   return employees[id];
+});
+
+export const selectEmployeesByCivilId = createSelector([employees], (emp) => {
+  return _.values(emp).map((emp) => emp.civil_id);
 });
