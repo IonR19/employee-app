@@ -31,29 +31,31 @@ class Autocomplete extends React.Component<Props, State> {
   handleKeyPress: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { activeIndex, matches } = this.state;
     
-    switch (event.which) {
-      case 13: // Enter key
-      if (matches.length) {
-        this.setState({
-          activeIndex: 0,
-          matches: [],
-          query: matches[activeIndex],
-          selected: true,
-        }, () => {
-          this.props.onSelect(this.state.query);
-        });
-      }
+    switch (event.key) {
+      case 'Enter': // Enter key
+        if (matches.length) {
+          this.setState({
+            activeIndex: 0,
+            matches: [],
+            query: matches[activeIndex],
+            selected: true,
+          }, () => {
+            this.props.onSelect(this.state.query);
+          });
+        }
         break;
-      case 38: // Up arrow
+      case 'ArrowDown': // Up arrow
         this.setState({
           activeIndex: (activeIndex - 1 + matches.length) % matches.length,
         });
         break;
-      case 40: // Down arrow
+      case 'ArrowUp': // Down arrow
         this.setState({
           activeIndex: (activeIndex + 1) % matches.length,
         });
         break;
+      case 'Escape':
+        
       default:
         break;
     }
