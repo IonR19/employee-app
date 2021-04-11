@@ -10,6 +10,7 @@ import "./App.scss";
 import { useDispatch } from "react-redux";
 import { fetchEmployees } from "../store";
 import VacationManagment from "../pages/vacations/VacationManagment.page";
+import Notification from "./notification/Notification.comp";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <Notification />
       <div className="has-background-grey-darker py-5">
         <div className="container">
           <Switch>
