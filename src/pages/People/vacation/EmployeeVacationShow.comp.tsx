@@ -20,7 +20,7 @@ const EmployeeVacationShow: React.FC<EmployeeVacationShowProps> = (props) => {
       return <h1>Not found</h1>;
     }
     if (selectedCount > 1) {
-      return <h1>More than 1 Employee exist</h1>;
+      return <></>;
     }
     return (
       <div>
