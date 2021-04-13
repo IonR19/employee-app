@@ -1,9 +1,10 @@
 import React from "react";
+import { OptionInputProps } from "../../static/StaticOptions";
 
 interface OptionInputFieldProps {
   label: string;
   name: string;
-  options: { value: string; title?: string }[];
+  options: OptionInputProps[];
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLSelectElement>;
 }

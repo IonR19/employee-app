@@ -1,4 +1,9 @@
-export const NationalityOption = [
+export interface OptionInputProps {
+  value: string;
+  title?: string;
+}
+
+export const NationalityOption: OptionInputProps[] = [
   { value: "Afghan" },
   { value: "Albanian" },
   { value: "Algerian" },
@@ -114,19 +119,19 @@ export const NationalityOption = [
   { value: "Zimbabwean" },
 ];
 
-export const GenderOptions = [
+export const GenderOptions: OptionInputProps[] = [
   { title: "Male", value: "M" },
   { title: "Female", value: "F" },
 ];
 
-export const MartialOptions = [
+export const MartialOptions: OptionInputProps[] = [
   { value: "Single" },
   { value: "Married" },
   { value: "Divorced" },
   { value: "Widow" },
 ];
 
-export const SectionOptions = [
+export const SectionOptions: OptionInputProps[] = [
   { value: "AH", title: "Ahmadi" },
   { value: "JH", title: "Jahra" },
   { value: "FR", title: "Farwaniya" },
@@ -145,7 +150,7 @@ export const transferOptions = {
   external: [],
 };
 
-export const leaveOptions = [
+export const leaveOptions: OptionInputProps[] = [
   { value: "start", title: "mid-shift" },
   { value: "end", title: "end-shift" },
 ];
