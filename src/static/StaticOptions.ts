@@ -137,3 +137,15 @@ export const SectionOptions = [
   { value: "SECURITY", title: "Saftey & Security" },
   { value: "CIVIL", title: "Civil Work" },
 ];
+
+export const vacationOptions = [];
+
+export const transferOptions = {
+  internal: SectionOptions,
+  external: [],
+};
+
+export const leaveOptions = [
+  { value: "start", title: "mid-shift" },
+  { value: "end", title: "end-shift" },
+];
