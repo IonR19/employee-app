@@ -8,6 +8,17 @@ import { DateTime } from "luxon";
 
 interface Props {}
 
+const Transfer = () => {
+  return(
+    <form onSubmit={e => e.preventDefault()}>
+      <select name="type" id="">
+        <option value="internal">internal</option>
+        <option value="external">external</option>
+      </select>
+    </form>
+  )
+}
+
 const Vacation = () => {
   // window.luxon = DateTime;
   const [state, setState] = useState({
@@ -26,7 +37,6 @@ const Vacation = () => {
   React.useEffect(() => {
     const { from, to } = state;
     if (from && to) {
-      console.log(from, to);
       const st = DateTime.fromISO(to);
       const en = DateTime.fromISO(from);
       const diff = st.diff(en, ["days"]);
@@ -40,7 +50,6 @@ const Vacation = () => {
       const en = DateTime.fromISO(from).plus({
         days: +duration,
       });
-      console.log(en.toISODate());
       setState({
         ...state,
         to: en.toISODate(),
@@ -103,7 +112,7 @@ const EmployeeVacationShow: React.FC<Props> = (props) => {
           tabs={[
             { title: "Vacation", child: Vacation },
             { title: "Leave Permission", child: Leave },
-            { title: "Transfer" },
+            { title: "Transfer", child: Transfer },
           ]}
         />
       </div>
