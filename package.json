@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.168",
+    "@types/luxon": "^1.26.3",
     "@types/react": "^17.0.3",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
@@ -37,6 +38,7 @@
     "font-awesome": "^4.7.0",
     "immer": "^8.0.2",
     "lodash": "^4.17.21",
+    "luxon": "^1.26.0",
     "parcel": "^2.0.0-nightly.635",
     "react": "^17.0.1",
     "react-bulma-components": "^3.4.0",
