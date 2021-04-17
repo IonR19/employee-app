@@ -20,7 +20,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="has-background-grey-darker py-5">
+      <div className="has-background-grey-darker py-5" id="App">
         <div className="container">
           <Switch>
             <Route path="/vacation" component={VacationManagment} />
