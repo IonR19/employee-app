@@ -18,8 +18,23 @@ export interface IAddOrder {
   payload: Order;
 }
 
-export const AddOrder = () => (dispatch: Dispatch) => {};
+export const AddOrder = (order: Order) => (dispatch: Dispatch) => {
+  dispatch<IAddOrder>({
+    type: ActionTypes.ADD_ORDER,
+    payload: order,
+  });
+};
 
-export const RejectOrder = (id: string) => async (dispatch: Dispatch) => {};
+export const RejectOrder = (id: string) => async (dispatch: Dispatch) => {
+  dispatch<IRejectOrder>({
+    type: ActionTypes.REJECT_ORDER,
+    payload: id,
+  });
+};
 
-export const AcceptOrder = (id: string) => async (dispatch: Dispatch) => {};
+export const AcceptOrder = (id: string) => async (dispatch: Dispatch) => {
+  dispatch<IAcceptOrder>({
+    type: ActionTypes.ACCEPT_ORDER,
+    payload: id,
+  });
+};
