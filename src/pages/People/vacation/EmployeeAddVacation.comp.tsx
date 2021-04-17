@@ -67,15 +67,9 @@ const EmployeeAddVacation = (props: Props) => {
     });
   };
 
-  React.useEffect(() => {
-    handleDateValidation("to");
-  }, [state.to]);
-  React.useEffect(() => {
-    handleDateValidation("duration");
-  }, [state.duration]);
-  React.useEffect(() => {
-    handleDateValidation("from");
-  }, [state.from]);
+  React.useEffect(() => handleDateValidation("to"), [state.to]);
+  React.useEffect(() => handleDateValidation("duration"), [state.duration]);
+  React.useEffect(() => handleDateValidation("from"), [state.from]);
 
   const { from, to, duration } = state;
   return (
