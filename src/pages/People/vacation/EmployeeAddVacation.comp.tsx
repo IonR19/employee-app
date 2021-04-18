@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 import React, { ChangeEvent, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectEmployeesByCivilId, selectFilteredEmployees } from "../../../store";
 import { AddOrder } from "../../../store/orders";
 
 interface Props {}
@@ -12,6 +13,7 @@ const EmployeeAddVacation = (props: Props) => {
     to: "",
     duration: "",
   });
+  const selectEmployee = useSelector(selectFilteredEmployees);
 
   const dispatch = useDispatch();
   const addVacation = () => {
@@ -23,7 +25,7 @@ const EmployeeAddVacation = (props: Props) => {
         to,
         duration,
         state: "new",
-        id: Math.random().toString(),
+        employeeId: selectEmployee[0].id,
       })
     );
   };

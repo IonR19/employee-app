@@ -14,6 +14,9 @@ const initialState: IOrderReducer = {
 
 const OrdersReducer = produce((state: IOrderReducer = initialState, action: IOrderActions) => {
   switch (action.type) {
+    case ActionTypes.FETCH_ORDER:
+      state.orders = action.payload;
+      return state;
     case ActionTypes.ACCEPT_ORDER:
       state.orders[action.payload].state = "accepted";
       return state;

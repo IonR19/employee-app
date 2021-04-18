@@ -15,6 +15,6 @@ interface TransferOrder {
   transfer: "internal" | "external";
 }
 
-type OrderState = { state: "new" | "accepted" | "rejected" } & { id: string };
+type OrderState = { state: "new" | "accepted" | "rejected" } & { [id: string]: string };
 
 export type Order = OrderState & (VacationOrder | LeaveOrder | TransferOrder);
