@@ -10,7 +10,7 @@ import "./App.scss";
 import { useDispatch } from "react-redux";
 import { fetchEmployees } from "../store";
 import VacationManagment from "../pages/vacations/VacationManagment.page";
-import OrderList from "../pages/Orders/List/List.page";
+import OrderList from "../pages/Orders/List/OrderList.page";
 
 export default function App() {
   const dispatch = useDispatch();
