@@ -1,5 +1,7 @@
 import { DateTime } from "luxon";
 import React, { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import { AddOrder } from "../../../store/orders";
 
 interface Props {}
 
@@ -10,6 +12,21 @@ const EmployeeAddVacation = (props: Props) => {
     to: "",
     duration: "",
   });
+
+  const dispatch = useDispatch();
+  const addVacation = () => {
+    const { duration, to, from } = state;
+    dispatch(
+      AddOrder({
+        type: "vacation",
+        from,
+        to,
+        duration,
+        state: "new",
+        id: Math.random().toString(),
+      })
+    );
+  };
 
   const handleDateValidation = (changed: string) => {
     const { duration, from, to } = state;
@@ -120,7 +137,9 @@ const EmployeeAddVacation = (props: Props) => {
         </div>
       </div>
 
-      <button className="button is-link">Submit</button>
+      <button className="button is-link" onClick={addVacation}>
+        Submit
+      </button>
     </form>
   );
 };
