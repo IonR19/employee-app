@@ -8,8 +8,10 @@ export interface IFetchOrder {
   payload: { [id: string]: Order };
 }
 
-export const fetchOrders = () => async (dispatch: Dispatch) => {
-  const { data } = await api.get<any[]>("/orders");
+export const fetchOrders = (params = {}) => async (dispatch: Dispatch) => {
+  const { data } = await api.get<any[]>("/orders", {
+    params,
+  });
   dispatch<IFetchOrder>({
     type: ActionTypes.FETCH_ORDER,
     payload: data.reduce((pre, cur) => ((pre[cur.id] = cur), pre), {}),
@@ -35,6 +37,7 @@ export interface IRejectOrder {
 }
 
 export const RejectOrder = (id: string) => async (dispatch: Dispatch) => {
+  await api.patch("/orders/" + id, { state: "rejected" });
   dispatch<IRejectOrder>({
     type: ActionTypes.REJECT_ORDER,
     payload: id,
@@ -46,6 +49,7 @@ export interface IAcceptOrder {
 }
 
 export const AcceptOrder = (id: string) => async (dispatch: Dispatch) => {
+  await api.patch("/orders/" + id, { state: "accepted" });
   dispatch<IAcceptOrder>({
     type: ActionTypes.ACCEPT_ORDER,
     payload: id,
