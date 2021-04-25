@@ -1,9 +1,48 @@
 import { Button } from "rbx";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Order } from "../../../models";
 import { AcceptOrder, fetchOrders, RejectOrder, selectNewOrders } from "../../../store/orders";
 
 interface Props {}
+interface RenderRowProps {
+  ord: Order;
+  i: number;
+}
+const RenderRow: React.FC<RenderRowProps> = ({ ord, i }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <td>{i}</td>
+      <td>{ord.type}</td>
+      {ord.type == "vacation" && (
+        <td colSpan={3}>
+          <b>From: </b>
+          {ord.from} - <b>To: </b>
+          {ord.to}
+          <br></br>
+          <b>Duration :</b>
+          {ord.duration}
+        </td>
+      )}
+      {ord.type == "leave" && <td colSpan={3}>{ord.leave}</td>}
+      <td>
+        <Button.Group align="centered">
+          <Button color="primary" onClick={() => dispatch(AcceptOrder(ord.id))}>
+            OK
+          </Button>
+          <Button color="danger" outlined onClick={() => dispatch(RejectOrder(ord.id))}>
+            REJECT
+          </Button>
+          <Button color="info" outlined>
+            View
+          </Button>
+        </Button.Group>
+      </td>
+    </>
+  );
+};
 
 const OrderList = (props: Props) => {
   const dispatch = useDispatch();
@@ -29,27 +68,7 @@ const OrderList = (props: Props) => {
           <tbody>
             {orders.map((ord, i) => (
               <tr key={ord.id}>
-                <td>{i + 1}</td>
-                <td>{ord.type}</td>
-                <td colSpan={3}>
-                  <b>From: </b>
-                  {ord.from} - <b>To: </b>
-                  {ord.to}
-                  <br></br>
-                  <b>Duration :</b>
-                  {ord.duration}
-                </td>
-                <td>
-                  <button className="button is-primary" onClick={() => dispatch(AcceptOrder(ord.id))}>
-                    OK
-                  </button>
-                  |
-                  <button className="button is-danger" onClick={() => dispatch(RejectOrder(ord.id))}>
-                    REJECT
-                  </button>
-                  <Button loading disabled >View </Button>
-                  <button className="button is-info">View</button>
-                </td>
+                <RenderRow ord={ord} i={i + 1} />
               </tr>
             ))}
           </tbody>

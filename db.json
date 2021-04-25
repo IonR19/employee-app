@@ -5,7 +5,7 @@
       "from": "2021-12-31",
       "to": "2022-01-17",
       "duration": "17",
-      "state": "new",
+      "state": "accepted",
       "id": "eyeBfFu"
     },
     {
@@ -16,16 +16,66 @@
       "state": "new",
       "employeeId": "2",
       "id": "JgAxj1S"
-    }
-  ],
-  "vacations": [
-    {
-      "name": "مرضية",
-      "id": 1
     },
     {
-      "name": "عرضية",
-      "id": 2
+      "type": "vacation",
+      "from": "2020-12-31",
+      "to": "2021-12-31",
+      "duration": "365",
+      "state": "new",
+      "employeeId": "5",
+      "id": "PW2X42v"
+    },
+    {
+      "type": "leave",
+      "state": "new",
+      "leave": "end-shift",
+      "employeeId": "2",
+      "id": "lBsVgUh"
+    },
+    {
+      "type": "leave",
+      "state": "new",
+      "leave": "start-shift",
+      "employeeId": "2",
+      "id": "DFmhCh8"
+    },
+    {
+      "type": "leave",
+      "state": "new",
+      "leave": "start-shift",
+      "employeeId": "2",
+      "id": "Igjp_WF"
+    },
+    {
+      "type": "leave",
+      "state": "new",
+      "leave": "start-shift",
+      "employeeId": "2",
+      "id": "mDWeoFC"
+    },
+    {
+      "type": "leave",
+      "state": "new",
+      "leave": "end-shift",
+      "employeeId": "2",
+      "id": "Q82hjVM"
+    },
+    {
+      "type": "leave",
+      "state": "rejected",
+      "leave": "end-shift",
+      "date": "",
+      "employeeId": "2",
+      "id": "UACsBL7"
+    },
+    {
+      "type": "leave",
+      "state": "new",
+      "leave": "start-shift",
+      "date": "",
+      "employeeId": "10",
+      "id": "PXk6QDu"
     }
   ],
   "employees": [
