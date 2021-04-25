@@ -3,11 +3,10 @@ import NavbarElement from "./NavbarElement";
 const NavStart = () => {
   return (
     <div className="navbar-start">
-      <NavbarElement url="/">View</NavbarElement>
+      <NavbarElement url="/">Search</NavbarElement>
       <NavbarElement url="/add">Add</NavbarElement>
       <NavbarElement url="/orders">Orders</NavbarElement>
       <NavbarElement url="/vacations">Vacations</NavbarElement>
-      <NavbarElement url="/vacation">Vacation Tools</NavbarElement>
     </div>
   );
 };

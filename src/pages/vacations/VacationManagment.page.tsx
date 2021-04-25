@@ -4,6 +4,7 @@ import { addVacation, fetchVacations, removeVacation, selectVacations, vacations
 
 interface Props {}
 
+/**@deprecated -- List will be generated from the back end */
 const VacationManagment: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = React.useState("");

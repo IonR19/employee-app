@@ -9,7 +9,6 @@ import EmployeeVacation from "../pages/People/vacation/EmployeeVacation.page";
 import "./App.scss";
 import { useDispatch } from "react-redux";
 import { fetchEmployees } from "../store";
-import VacationManagment from "../pages/vacations/VacationManagment.page";
 import OrderList from "../pages/Orders/List/OrderList.page";
 
 export default function App() {
@@ -25,7 +24,6 @@ export default function App() {
         <div className="container">
           <Switch>
             <Route path="/orders" component={OrderList} />
-            <Route path="/vacation" component={VacationManagment} />
             <Route path="/vacations" component={EmployeeVacation} />
             <Route path="/edit/:id" component={EmployeeEdit} />
             <Route path="/add" component={EmployeeAdd} />
