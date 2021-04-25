@@ -8,6 +8,7 @@ interface VacationOrder {
 interface LeaveOrder {
   type: "leave";
   leave: "start-shift" | "end-shift";
+  date: string;
 }
 
 interface TransferOrder {
