@@ -1,31 +1,19 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import OptionInputField from "../../../components/FormElements/OptionInputField";
 import Tabs from "../../../components/Tabs/Tab.comp";
 import { selectFilteredEmployees } from "../../../store";
-import { leaveOptions } from "../../../static/StaticOptions";
-import { DateTime } from "luxon";
 import EmployeeAddVacation from "./EmployeeAddVacation.comp";
+import EmployeeAddLeave from "./EmployeeLeave.comp";
 
 interface Props {}
 
 const Transfer = () => {
-  return(
-    <form onSubmit={e => e.preventDefault()}>
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
       <select name="type" id="">
         <option value="internal">internal</option>
         <option value="external">external</option>
       </select>
-    </form>
-  )
-}
-
-
-
-const Leave = () => {
-  return (
-    <form>
-      <OptionInputField label="Leave" name="leave" options={leaveOptions} />
     </form>
   );
 };
@@ -43,12 +31,13 @@ const EmployeeVacationShow: React.FC<Props> = (props) => {
     }
     return (
       <div>
-        <b>{JSON.stringify(employees[0])}</b>
+        {/* <b>{JSON.stringify(employees[0])}</b> */}
         <Tabs
           tabs={[
             { title: "Vacation", child: EmployeeAddVacation },
-            { title: "Leave Permission", child: Leave },
-            { title: "Transfer", child: Transfer },
+            { title: "Leave Permission", child: EmployeeAddLeave },
+            // Transfer to be added for later
+            // { title: "Transfer", child: Transfer },
           ]}
         />
       </div>
