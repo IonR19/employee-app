@@ -1,0 +1,9 @@
+{
+  "translation": {
+    "Welcome to React": "Welcome to React and react-i18next",
+    "search": "Search",
+    "add": "Add",
+    "orders": "Orders",
+    "vacations": "Vacations"
+  }
+}
