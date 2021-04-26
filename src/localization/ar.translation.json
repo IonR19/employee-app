@@ -27,6 +27,9 @@
     "authority": "صلاحية التشغيل",
     "personal_data": "البيانات الشخصية",
     "work_data": "بيانات العمل",
-    "location_data": "بيانات السكن"
+    "location_data": "بيانات السكن",
+    "update": "تحديث",
+    "reset": "إعادة",
+    "submit": "إنشاء"
   }
 }

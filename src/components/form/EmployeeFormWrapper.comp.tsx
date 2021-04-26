@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { IEmployee } from "../../models";
 import LocationForm from "./EmployeeLocationForm.comp";
 import PersonalForm from "./EmployeePersonalForm.comp";
@@ -28,6 +29,8 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
     onSubmit(Employee as IEmployee);
   };
 
+  const { t } = useTranslation();
+
   return (
     <form className="form" onSubmit={handleSubmit} ref={formRef}>
       <PersonalForm initialValues={initialValues} />
@@ -41,11 +44,11 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
               type="submit"
               className="button is-primary"
               disabled={false}
-              value={type == "create" ? "Submit" : "Update"}
+              value={t(type == "create" ? "submit" : "update").toString()}
             />
           </p>
           <p className="control">
-            <input disabled={false} type="reset" className="button" />
+            <input disabled={false} type="reset" className="button" value={t("reset").toString()} />
           </p>
         </div>
       </div>

@@ -27,6 +27,9 @@
     "authority": "Authority",
     "personal_data": "Personal Data",
     "work_data": "Work Data",
-    "location_data": "Location Data"
+    "location_data": "Location Data",
+    "update": "Update",
+    "reset": "Reset",
+    "submit": "Submit"
   }
 }
