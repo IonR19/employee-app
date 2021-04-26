@@ -17,6 +17,16 @@
     "city": "منطقة",
     "block": "قطعة",
     "street": "شارع",
-    "house": "بيت"
+    "house": "بيت",
+    "transfer_date": "تاريخ النقل",
+    "hire_on": "تارخ التعيين",
+    "years_exp": "سنوات الخبرة",
+    "section": "القسم",
+    "job_title": "المسمى الوظيفي",
+    "education_level": "المستوى التعليمي",
+    "authority": "صلاحية التشغيل",
+    "personal_data": "البيانات الشخصية",
+    "work_data": "بيانات العمل",
+    "location_data": "بيانات السكن"
   }
 }

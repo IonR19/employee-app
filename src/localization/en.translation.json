@@ -17,6 +17,16 @@
     "city": "City",
     "block": "Block",
     "street": "Street",
-    "house": "House"
+    "house": "House",
+    "transfer_date": "Move in Date",
+    "hire_on": "Hire on Date",
+    "years_exp": "Years of Experience",
+    "section": "Section",
+    "job_title": "Job Title",
+    "education_level": "Education Level",
+    "authority": "Authority",
+    "personal_data": "Personal Data",
+    "work_data": "Work Data",
+    "location_data": "Location Data"
   }
 }

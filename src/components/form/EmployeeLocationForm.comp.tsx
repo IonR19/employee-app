@@ -29,7 +29,7 @@ const LocationForm: React.FC<LocationFormProps> = ({ initialValues }) => {
 
   return (
     <div className="box">
-      <h1 className="title has-text-centered">Location Data</h1>
+      <h1 className="title has-text-centered">{t("location_data")}</h1>
       <div className="columns is-multiline" style={{ borderRadius: "12px" }}>
         <div className="column">
           <InputField label={t("city")} name="city" onChange={handleState} />

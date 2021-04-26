@@ -50,7 +50,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
   const { t } = useTranslation();
   return (
     <div className="box">
-      <h1 className="title has-text-centered">Personal Data</h1>
+      <h1 className="title has-text-centered">{t("personal_data")}</h1>
       <div className="columns is-multiline has" style={{ borderRadius: "12px" }}>
         <div className="column is-4">
           <InputField

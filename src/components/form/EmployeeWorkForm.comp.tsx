@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { SectionOptions } from "../../static/StaticOptions";
 import InputField from "../FormElements/InputField";
 import OptionInputField from "../FormElements/OptionInputField";
@@ -7,7 +8,7 @@ interface WorkFormProps {
   initialValues?: {
     job_title: string;
     education_level: string;
-    authority: string;
+    authority: boolean;
     move_in: string;
     hire_on: string;
     years_exp: string;
@@ -15,31 +16,39 @@ interface WorkFormProps {
   };
 }
 const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
-  const [value, setValue] = React.useState({
+  const [values, setValues] = React.useState({
     job_title: initialValues?.job_title || "",
     education_level: initialValues?.education_level || "",
-    authority: initialValues?.authority || "",
+    authority: initialValues?.authority || false,
     move_in: initialValues?.move_in || "",
     hire_on: initialValues?.hire_on || "",
     years_exp: initialValues?.years_exp || "",
     section: initialValues?.section || "",
   });
-  const { authority, education_level, hire_on, job_title, move_in, years_exp, section } = value;
+  const { authority, education_level, hire_on, job_title, move_in, years_exp, section } = values;
 
-  const handleState = (e: any) => {
-    setValue({
-      ...value,
-      [e.target.name]: e.target.value,
+  const handleState = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    let { name, value } = e.target;
+    if (e.target.type == "checkbox") {
+      //@ts-ignore
+      value = e.target.checked;
+    }
+
+    setValues({
+      ...values,
+      [name]: value,
     });
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="box">
-      <h1 className="title has-text-centered">Work Data</h1>
+      <h1 className="title has-text-centered">{t("work_data")}</h1>
       <div className="columns is-multiline has-background-info-light" style={{ borderRadius: "12px" }}>
         <div className="column is-4">
           <InputField
-            label="Job Title"
+            label={t("job_title")}
             name="job_title"
             value={job_title}
             onChange={handleState}
@@ -48,19 +57,28 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
         </div>
         <div className="column is-4">
           <InputField
-            label="Education Level"
+            label={t("education_level")}
             name="education_level"
             value={education_level}
             type="number"
             onChange={handleState}
           />
         </div>
-        <div className="column is-4">
-          <InputField label="Authority" name="authority" value={authority} onChange={handleState} />
+        <div className="column is-4 is-flex is-align-items-center is-justify-content-center">
+          <label className="checkbox label">
+            <input
+              className="mx-3"
+              type="checkbox"
+              name="authority"
+              checked={authority}
+              onChange={handleState}
+            />
+            {t("authority")}
+          </label>
         </div>
         <div className="column is-4">
           <InputField
-            label="Move in Date"
+            label={t("transfer_date")}
             name="move_in"
             value={move_in}
             type="date"
@@ -69,7 +87,7 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
         </div>
         <div className="column is-4">
           <InputField
-            label="Hire Date"
+            label={t("hire_on")}
             name="hire_on"
             value={hire_on}
             type="date"
@@ -78,7 +96,7 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
         </div>
         <div className="column">
           <InputField
-            label="Years of Experience"
+            label={t("years_exp")}
             name="years_exp"
             value={years_exp}
             type="number"
@@ -87,7 +105,7 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
         </div>
         <div className="column">
           <OptionInputField
-            label="Section"
+            label={t("section")}
             name="section"
             value={section}
             options={SectionOptions}
