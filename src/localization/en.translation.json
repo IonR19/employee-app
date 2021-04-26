@@ -6,6 +6,13 @@
     "orders": "Orders",
     "vacations": "Vacations",
     "settings": "Settings",
-    "switch_lng": "Change Language"
+    "switch_lng": "Change Language",
+    "name": "Name",
+    "civil_id": "Civil ID",
+    "gender": "Gender",
+    "nationality": "Nationality",
+    "martial_state": "Martial State",
+    "mew_email": "MEW Email",
+    "email": "Email"
   }
 }
