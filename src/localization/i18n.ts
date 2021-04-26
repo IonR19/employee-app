@@ -1,12 +1,16 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { translation } from "./translation.json";
+import { translation as en } from "./en.translation.json";
+import { translation as ar } from "./ar.translation.json";
 
 // the translations
 // (tip move them in a JSON file and import them)
 const resources = {
   en: {
-    translation,
+    translation: en,
+  },
+  ar: {
+    translation: ar,
   },
   fr: {
     translation: {

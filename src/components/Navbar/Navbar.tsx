@@ -1,5 +1,6 @@
 import React from "react";
 import NavbarLogo from "./NavbarLogo";
+import NavbarSwitchLang from "./NavbarSwitchLang.comp";
 import NavEnd from "./NavEnd";
 import NavStart from "./NavStart";
 
@@ -9,6 +10,7 @@ const Navbar: React.FC = () => {
       <NavbarLogo />
       <div id="navbarBasicExample" className="navbar-menu">
         <NavStart />
+        <NavbarSwitchLang />
         <NavEnd />
       </div>
     </nav>

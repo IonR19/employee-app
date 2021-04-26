@@ -1,0 +1,11 @@
+{
+  "translation": {
+    "Welcome to React": "Welcome to React and react-i18next",
+    "search": "البحث",
+    "add": "إضافة",
+    "orders": "الطلبات",
+    "vacations": "الإجازات",
+    "settings": "الإعدادات",
+    "switch_lng": "تغيير اللغة"
+  }
+}

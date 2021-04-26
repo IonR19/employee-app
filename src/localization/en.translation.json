@@ -4,6 +4,8 @@
     "search": "Search",
     "add": "Add",
     "orders": "Orders",
-    "vacations": "Vacations"
+    "vacations": "Vacations",
+    "settings": "Settings",
+    "switch_lng": "Change Language"
   }
 }

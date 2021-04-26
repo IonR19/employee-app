@@ -1,12 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import NavbarElement from "./NavbarElement";
+
 const NavStart = () => {
+  const { t } = useTranslation();
   return (
     <div className="navbar-start">
-      <NavbarElement url="/">Search</NavbarElement>
-      <NavbarElement url="/add">Add</NavbarElement>
-      <NavbarElement url="/orders">Orders</NavbarElement>
-      <NavbarElement url="/vacations">Vacations</NavbarElement>
+      <NavbarElement url="/">{t("search")}</NavbarElement>
+      <NavbarElement url="/add">{t("add")}</NavbarElement>
+      <NavbarElement url="/orders">{t("orders")}</NavbarElement>
+      <NavbarElement url="/vacations">{t("vacations")}</NavbarElement>
     </div>
   );
 };
