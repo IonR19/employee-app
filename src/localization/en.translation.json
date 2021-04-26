@@ -13,6 +13,10 @@
     "nationality": "Nationality",
     "martial_state": "Martial State",
     "mew_email": "MEW Email",
-    "email": "Email"
+    "email": "Email",
+    "city": "City",
+    "block": "Block",
+    "street": "Street",
+    "house": "House"
   }
 }

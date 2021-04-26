@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import InputField from "../FormElements/InputField";
 
 interface LocationFormProps {
@@ -24,21 +25,23 @@ const LocationForm: React.FC<LocationFormProps> = ({ initialValues }) => {
     });
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="box">
       <h1 className="title has-text-centered">Location Data</h1>
       <div className="columns is-multiline" style={{ borderRadius: "12px" }}>
         <div className="column">
-          <InputField label="City" name="city" onChange={handleState} />
+          <InputField label={t("city")} name="city" onChange={handleState} />
         </div>
         <div className="column">
-          <InputField label="Block" name="block" onChange={handleState} />
+          <InputField label={t("block")} name="block" onChange={handleState} />
         </div>
         <div className="column">
-          <InputField label="Street" name="street" onChange={handleState} />
+          <InputField label={t("street")} name="street" onChange={handleState} />
         </div>
         <div className="column">
-          <InputField label="House" name="house" onChange={handleState} />
+          <InputField label={t("house")} name="house" onChange={handleState} />
         </div>
       </div>
     </div>
