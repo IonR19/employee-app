@@ -10,7 +10,6 @@ const Navbar: React.FC = () => {
       <NavbarLogo />
       <div id="navbarBasicExample" className="navbar-menu">
         <NavStart />
-        <NavbarSwitchLang />
         <NavEnd />
       </div>
     </nav>

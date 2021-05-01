@@ -10,8 +10,6 @@ const NavbarSwitchLang: React.FC<Props> = (props) => {
     if (i18n.language == "ar") {
       newLang = "en";
     }
-    console.log(newLang);
-
     i18n.changeLanguage(newLang);
   };
   return (
