@@ -9,6 +9,7 @@
     "switch_lng": "Change Language",
     "name": "Name",
     "civil_id": "Civil ID",
+    "file_no": "File No",
     "gender": "Gender",
     "nationality": "Nationality",
     "martial_state": "Martial State",
@@ -30,6 +31,8 @@
     "location_data": "Location Data",
     "update": "Update",
     "reset": "Reset",
-    "submit": "Submit"
+    "submit": "Submit",
+    "tools": "Tools",
+    "serial": "Serial"
   }
 }

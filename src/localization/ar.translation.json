@@ -9,6 +9,7 @@
     "switch_lng": "تغيير اللغة",
     "name": "الأسم",
     "civil_id": "الرقم المدني",
+    "file_no": "رقم الملف",
     "gender": "الجنس",
     "nationality": "الجنسية",
     "martial_state": "الحالة الاجتماعية",
@@ -17,7 +18,7 @@
     "city": "منطقة",
     "block": "قطعة",
     "street": "شارع",
-    "house": "بيت",
+    "house": "منزل",
     "transfer_date": "تاريخ النقل",
     "hire_on": "تارخ التعيين",
     "years_exp": "سنوات الخبرة",
@@ -30,6 +31,13 @@
     "location_data": "بيانات السكن",
     "update": "تحديث",
     "reset": "إعادة",
-    "submit": "إنشاء"
+    "submit": "إنشاء",
+    "tools": "أدوات",
+    "serial": "التسلسل",
+    "from": "من",
+    "to": "إلى",
+    "duration": "المدة",
+    "vacation": "أجازة",
+    "leave": "أستئذان"
   }
 }

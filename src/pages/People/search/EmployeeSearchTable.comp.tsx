@@ -1,22 +1,26 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectFilteredEmployees } from "../../../store";
+import { selectFilteredEmployees, appLanguageDir } from "../../../store";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const employees = useSelector(selectFilteredEmployees);
+  const { t, i18n } = useTranslation();
+  const lng = useSelector(appLanguageDir);
+
   return (
-    <div className="box p-4 " style={{ minHeight: "100vh" }}>
+    <div className={`box p-4 ${lng}`} style={{ minHeight: "100vh" }}>
       <table className="table is-hoverable is-fullwidth is-striped is-bordered">
         <thead>
           <tr>
-            <th className="is-primary">Serial</th>
-            <th className="is-primary">Name</th>
-            <th className="is-primary">Civil ID</th>
-            <th className="is-primary">File No</th>
-            <th className="is-primary">Section</th>
-            <th className="is-primary">Level</th>
-            <th className="is-primary">tools</th>
+            <th className="is-primary">{t("serial")}</th>
+            <th className="is-primary">{t("name")}</th>
+            <th className="is-primary">{t("civil_id")}</th>
+            <th className="is-primary">{t("file_no")}</th>
+            <th className="is-primary">{t("section")}</th>
+            <th className="is-primary">{t("education_level")}</th>
+            <th className="is-primary">{t("tools")}</th>
           </tr>
         </thead>
         <tbody>

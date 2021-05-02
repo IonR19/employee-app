@@ -1,15 +1,19 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { ChangeLanguage } from "../../store/settings";
 
 interface Props {}
 
 const NavbarSwitchLang: React.FC<Props> = (props) => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const languageChangeHandler = () => {
     let newLang = "ar";
     if (i18n.language == "ar") {
       newLang = "en";
     }
+    dispatch(ChangeLanguage());
     i18n.changeLanguage(newLang);
   };
   return (
