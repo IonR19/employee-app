@@ -10,7 +10,6 @@ import "./App.scss";
 import { useDispatch } from "react-redux";
 import { fetchEmployees } from "../store";
 import OrderList from "../pages/Orders/List/OrderList.page";
-import Playground from "../pages/pdf/Playground.page";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -24,7 +23,6 @@ export default function App() {
       <div className="has-background-grey-darker py-5" id="App">
         <div className="container">
           <Switch>
-            <Route path="/pdf" component={Playground} />
             <Route path="/orders" component={OrderList} />
             <Route path="/vacations" component={EmployeeVacation} />
             <Route path="/edit/:id" component={EmployeeEdit} />
