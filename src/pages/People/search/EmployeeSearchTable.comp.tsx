@@ -2,19 +2,20 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectFilteredEmployees, appLanguageDir } from "../../../store";
+import { appLanguageDir, selectPagedFilteredEmployees } from "../../../store";
+import EmployeePagination from "./EmployeePagination.comp";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
-  const employees = useSelector(selectFilteredEmployees);
+  const employees = useSelector(selectPagedFilteredEmployees);
   const { t, i18n } = useTranslation();
   const lng = useSelector(appLanguageDir);
 
   return (
     <div className={`box p-4 ${lng}`} style={{ minHeight: "100vh" }}>
+      <EmployeePagination />
       <table className="table is-hoverable is-fullwidth is-striped is-bordered">
         <thead>
           <tr>
-            <th className="is-primary">{t("serial")}</th>
             <th className="is-primary">{t("name")}</th>
             <th className="is-primary">{t("civil_id")}</th>
             <th className="is-primary">{t("file_no")}</th>
@@ -26,7 +27,6 @@ const EmployeeSearchTable: React.FC = (props: any) => {
         <tbody>
           {employees.map((emp: any, index: number) => (
             <tr key={emp.id}>
-              <td>{index + 1}</td>
               <td>{emp.name}</td>
               <td>{emp.civil_id}</td>
               <td>{emp.file_no}</td>

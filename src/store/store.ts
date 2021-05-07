@@ -1,19 +1,19 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import redux_logger from "redux-logger";
-import reduxThunk from "redux-thunk";
-import employeeReducers from "./employees/employee.reducers";
+import { getDefaultMiddleware } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import employeeSlice from "./employees/employee.slice";
 import OrdersReducer from "./orders/orders.reducers";
 import SettingsReducer from "./settings/settings.reducers";
 import VacationReducer from "./vacations/vacation.reducers";
 
 const reducers = combineReducers({
-  employees: employeeReducers,
+  employees: employeeSlice.reducer,
   vacations: VacationReducer,
   orders: OrdersReducer,
-  settings: SettingsReducer
+  settings: SettingsReducer,
 });
 
-const middlewares = [redux_logger, reduxThunk];
+const middlewares = [...getDefaultMiddleware()];
 
 export const store = createStore(reducers, applyMiddleware(...middlewares));
 export type RootState = ReturnType<typeof reducers>;

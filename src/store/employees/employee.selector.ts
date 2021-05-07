@@ -3,8 +3,10 @@ import { createSelector } from "reselect";
 import { iFilter } from "../../models";
 import { RootState } from "../store";
 
-const employees = (state: RootState) => state.employees!.data;
-const filters = (state: RootState) => state.employees!.filters;
+const employees = (state: RootState) => state.employees!.byId;
+const filters = (state: RootState) => state.employees.filter;
+const pagination = (state: RootState) => state.employees.pagination;
+const order = (state: RootState) => state.employees.order;
 
 //TODO - FIX TYPESCRIPT OF FIND A BETTER SOLUTION
 export const selectAllEmployees = createSelector([employees], (empObject) => {
@@ -13,6 +15,7 @@ export const selectAllEmployees = createSelector([employees], (empObject) => {
     return empObject[key];
   });
 });
+
 export const selectFilteredEmployees = createSelector(
   [employees, filters],
   (employees, filters: iFilter) => {
@@ -32,6 +35,15 @@ export const selectFilteredEmployees = createSelector(
       });
     });
     return ids.map((id) => employees[id]);
+  }
+);
+
+export const selectPagedFilteredEmployees = createSelector(
+  [selectFilteredEmployees, pagination],
+  (filtered, pag) => {
+    let { rowsPerPage, currentPage } = pag;
+    let mx = Math.min(filtered.length, rowsPerPage * currentPage);
+    return filtered.slice((currentPage - 1) * rowsPerPage, mx);
   }
 );
 
