@@ -1,9 +1,9 @@
-import { Button } from "rbx";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Order } from "../../../models";
 import { AcceptOrder, fetchOrders, RejectOrder, selectNewOrders } from "../../../store/orders";
-
+import { Button } from "react-bulma-components";
+import { useSelector } from "react-redux";
 interface Props {}
 interface RenderRowProps {
   ord: Order;
@@ -28,7 +28,7 @@ const RenderRow: React.FC<RenderRowProps> = ({ ord, i }) => {
       )}
       {ord.type == "leave" && <td colSpan={3}>{ord.leave}</td>}
       <td>
-        <Button.Group align="centered">
+        <Button.Group align="center">
           <Button color="primary" onClick={() => dispatch(AcceptOrder(ord.id))}>
             OK
           </Button>
