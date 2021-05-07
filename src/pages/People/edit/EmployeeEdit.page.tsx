@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect, ConnectedProps, useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps, useRouteMatch } from "react-router";
 import EmployeeFormWrapper from "../../../components/form/EmployeeFormWrapper.comp";
-import { IEmployee } from "../../../models";
+import { iEmployee } from "../../../models";
 import { fetchEmployeesById, RootState, selectEmployeeById, updateEmployeeById } from "../../../store";
 import EmployeeEditNav from "./EmployeeEditNav.comp";
 
@@ -18,8 +18,8 @@ const EmployeeEdit: React.FC = () => {
     dispatch(fetchEmployeesById(id));
   }, [id]);
 
-  const onSubmit = (e: IEmployee) => {
-    dispatch(updateEmployeeById(id, e));
+  const onSubmit = (e: iEmployee) => {
+    dispatch(updateEmployeeById(e));
   };
 
   return (

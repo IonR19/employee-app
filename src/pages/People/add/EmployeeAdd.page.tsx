@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import EmployeeEditWrapper from "../../../components/form/EmployeeFormWrapper.comp";
-import { IEmployee } from "../../../models";
+import { iEmployee } from "../../../models";
 import { addEmployee } from "../../../store";
 
 const EmployeeAdd: React.FC = () => {
   const dispatch = useDispatch();
 
-  const onSubmit = (emp: IEmployee) => {
+  const onSubmit = (emp: iEmployee) => {
     dispatch(addEmployee(emp));
   };
 

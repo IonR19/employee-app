@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { IEmployee } from "../../models";
+import { iEmployee } from "../../models";
 import LocationForm from "./EmployeeLocationForm.comp";
 import PersonalForm from "./EmployeePersonalForm.comp";
 import WorkForm from "./EmployeeWorkForm.comp";
@@ -26,7 +26,7 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
       });
     }
 
-    onSubmit(Employee as IEmployee);
+    onSubmit(Employee as iEmployee);
   };
 
   const { t } = useTranslation();
