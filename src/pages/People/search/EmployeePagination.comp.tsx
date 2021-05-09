@@ -7,15 +7,21 @@ import { RootState, setElementPerPage, setPage } from "../../../store";
 interface Props {}
 
 const EmployeePagination = (props: Props) => {
+  const { t } = useTranslation();
+  let pageOptions = [
+    { value: "10" },
+    { value: "20" },
+    { value: "30" },
+    { title: "all", value: "999999" },
+  ];
+
   const dispatch = useDispatch();
-  const goToPage = (page: number) => {
-    dispatch(setPage(page));
-  };
-  const { currentPage, rowsPerPage, length } = useSelector((state: RootState) => {
+  const { currentPage, rowsPerPage } = useSelector((state: RootState) => {
     return state.employees.pagination;
   });
+  const { length } = useSelector((st: RootState) => st.employees.order);
 
-  const { t } = useTranslation();
+  let total = rowsPerPage >= length ? 0 : Math.ceil(length / rowsPerPage);
 
   return (
     <>
@@ -23,14 +29,14 @@ const EmployeePagination = (props: Props) => {
         label="Rows per page"
         name="rpg"
         onChange={(e) => dispatch(setElementPerPage(+e.target.value))}
-        options={[{ value: "10" }, { value: "20" }, { value: "30" }, { title: "all", value: "999999" }]}
+        options={pageOptions}
         value={rowsPerPage.toString()}
       />
       <Pagination
         disabled={false}
         current={currentPage}
         showFirstLast
-        total={rowsPerPage >= length ? 0 : Math.ceil(length / rowsPerPage)}
+        total={total}
         autoHide={false}
         size="small"
         delta={1}
