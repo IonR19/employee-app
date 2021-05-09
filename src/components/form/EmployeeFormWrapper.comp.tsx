@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
+import { Button } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { iEmployee } from "../../models";
+import { RootState } from "../../store";
 import LocationForm from "./EmployeeLocationForm.comp";
 import PersonalForm from "./EmployeePersonalForm.comp";
 import WorkForm from "./EmployeeWorkForm.comp";
@@ -31,6 +34,8 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
 
   const { t } = useTranslation();
 
+  const { creating, editing } = useSelector((state: RootState) => state.employees.loading);
+
   return (
     <form className="form" onSubmit={handleSubmit} ref={formRef}>
       <PersonalForm initialValues={initialValues} />
@@ -40,12 +45,9 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
       <div className="box">
         <div className="field is-grouped is-grouped-centered">
           <p className="control">
-            <input
-              type="submit"
-              className="button is-primary"
-              disabled={false}
-              value={t(type == "create" ? "submit" : "update").toString()}
-            />
+            <Button color="primary" type="submit" loading={creating || editing}>
+              {t(type)}
+            </Button>
           </p>
           <p className="control">
             <input disabled={false} type="reset" className="button" value={t("reset").toString()} />

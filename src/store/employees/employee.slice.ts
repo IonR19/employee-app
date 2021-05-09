@@ -46,9 +46,23 @@ const employeeSlice = createSlice({
       .addCase(addEmployee.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
         state.order.push(payload.id!);
+        state.loading.creating = false;
+      })
+      .addCase(addEmployee.pending, (state) => {
+        state.loading.creating = true;
+      })
+      .addCase(addEmployee.rejected, (state) => {
+        state.loading.creating = false;
       })
       .addCase(updateEmployeeById.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
+        state.loading.editing = false
+      })
+      .addCase(updateEmployeeById.pending, (state) => {
+        state.loading.editing = true;
+      })
+      .addCase(updateEmployeeById.rejected, (state) => {
+        state.loading.editing = false;
       })
       .addCase(deleteEmployeeById.pending, (state) => {
         state.loading.deleting = true;

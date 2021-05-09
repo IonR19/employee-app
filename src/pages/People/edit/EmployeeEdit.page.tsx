@@ -19,7 +19,7 @@ const EmployeeEdit: React.FC = () => {
   }, [id]);
 
   const onSubmit = (e: iEmployee) => {
-    dispatch(updateEmployeeById(e));
+    dispatch(updateEmployeeById({ id, ...e }));
   };
 
   return (
