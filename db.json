@@ -910,6 +910,27 @@
       "level": "كادر عام / وظائف عامة / السابعة",
       "section": "قسم الطوارئ_الجهراء_ادارة شبكات التوزيع الكهربائية",
       "work": "الجهراء"
+    },
+    {
+      "name": "امسحني",
+      "civil_id": "123456789123",
+      "gender": "M",
+      "nationality": "Afghan",
+      "martial": "Single",
+      "email": "",
+      "mew_email": "",
+      "job_title": "",
+      "education_level": "",
+      "authority": "on",
+      "move_in": "",
+      "hire_on": "",
+      "years_exp": "",
+      "section": "AH",
+      "city": "",
+      "block": "",
+      "street": "",
+      "house": "",
+      "id": "WVnmdac"
     }
   ]
 }
