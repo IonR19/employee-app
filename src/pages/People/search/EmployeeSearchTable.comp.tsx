@@ -1,14 +1,16 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { appLanguageDir, selectPagedFilteredEmployees } from "../../../store";
+import { Link, Route } from "react-router-dom";
+import { appLanguageDir, selectEmployeesCount, selectPagedFilteredEmployees } from "../../../store";
+import EmployeeRemove from "../remove/EmployeeRemove.page";
 import EmployeePagination from "./EmployeePagination.comp";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const employees = useSelector(selectPagedFilteredEmployees);
   const { t, i18n } = useTranslation();
   const lng = useSelector(appLanguageDir);
+  const count = useSelector(selectEmployeesCount);
 
   return (
     <div className={`box p-4 ${lng}`} style={{ minHeight: "100vh" }}>
@@ -33,8 +35,11 @@ const EmployeeSearchTable: React.FC = (props: any) => {
               <td>{emp.section}</td>
               <td>{emp.level}</td>
               <td>
-                <Link to={`/edit/${emp.id}`} className="button">
-                  edit
+                <Link to={`/edit/${emp.id}`} className="button is-info">
+                  {t("edit")}
+                </Link>
+                <Link to={`/delete/${emp.id}`} className="button">
+                  {t("delete")}
                 </Link>
               </td>
             </tr>
@@ -42,6 +47,12 @@ const EmployeeSearchTable: React.FC = (props: any) => {
           <tr></tr>
         </tbody>
       </table>
+      <div>
+        <h2 className="subtitle">
+          {t("total_emp")}: {count}
+        </h2>
+      </div>
+      <Route path="/delete/:id" component={EmployeeRemove} />
     </div>
   );
 };

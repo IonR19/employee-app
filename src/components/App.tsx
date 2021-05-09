@@ -10,6 +10,7 @@ import "./App.scss";
 import { useDispatch } from "react-redux";
 import { fetchEmployees } from "../store";
 import OrderList from "../pages/Orders/List/OrderList.page";
+import EmployeeRemove from "../pages/People/remove/EmployeeRemove.page";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export default function App() {
             <Route path="/vacations" component={EmployeeVacation} />
             <Route path="/edit/:id" component={EmployeeEdit} />
             <Route path="/add" component={EmployeeAdd} />
-            <Route path="/" exact component={EmployeeSearch} />
+            <Route path="/" component={EmployeeSearch} />
           </Switch>
         </div>
       </div>
