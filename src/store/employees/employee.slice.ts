@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createReducer, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { iEmployee, iFilter } from "../../models";
-import { addEmployee, fetchEmployees, updateEmployeeById } from "./employee.actions";
+import { addEmployee, deleteEmployeeById, fetchEmployees, updateEmployeeById } from "./employee.actions";
 
 const employeeSlice = createSlice({
   name: "employee",
@@ -8,10 +8,15 @@ const employeeSlice = createSlice({
     byId: {} as { [id: string]: iEmployee },
     order: [] as string[],
     filter: {} as iFilter,
+    loading: {
+      getting: false,
+      deleting: false,
+      creating: false,
+      editing: false,
+    },
     pagination: {
       currentPage: 1,
       rowsPerPage: 10,
-      length: 0,
     },
   },
   reducers: {
@@ -37,15 +42,31 @@ const employeeSlice = createSlice({
           return pre;
         }, {} as any);
         state.order = payload.map((emp) => emp.id!);
-        state.pagination.length = state.order.length;
       })
       .addCase(addEmployee.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
         state.order.push(payload.id!);
-        state.pagination.length = state.order.length;
       })
       .addCase(updateEmployeeById.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
+      })
+      .addCase(deleteEmployeeById.pending, (state) => {
+        state.loading.deleting = true;
+      })
+      .addCase(deleteEmployeeById.rejected, (state) => {
+        state.loading.deleting = false;
+        //display notification
+      })
+      .addCase(deleteEmployeeById.fulfilled, (state, { payload }) => {
+        delete state.byId[payload];
+
+        let index = state.order.indexOf(payload);
+        state.order.splice(index, 1);
+
+        state.loading.deleting = false;
+        const { currentPage, rowsPerPage } = state.pagination;
+        const { length } = state.order;
+        state.pagination.currentPage = Math.min(currentPage, Math.ceil(length / rowsPerPage));
       });
   },
 });

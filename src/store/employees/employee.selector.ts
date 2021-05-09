@@ -3,7 +3,7 @@ import { createSelector } from "reselect";
 import { iFilter } from "../../models";
 import { RootState } from "../store";
 
-const employees = (state: RootState) => state.employees!.byId;
+const employees = (state: RootState) => state.employees.byId;
 const filters = (state: RootState) => state.employees.filter;
 const pagination = (state: RootState) => state.employees.pagination;
 const order = (state: RootState) => state.employees.order;
@@ -15,6 +15,8 @@ export const selectAllEmployees = createSelector([employees], (empObject) => {
     return empObject[key];
   });
 });
+
+export const selectEmployeesCount = createSelector([order], (ord) => ord.length);
 
 export const selectFilteredEmployees = createSelector(
   [employees, filters],
