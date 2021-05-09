@@ -1,6 +1,10 @@
 {
   "translation": {
     "Welcome to React": "Welcome to React and react-i18next",
+    "yes": "نعم",
+    "no": "لا",
+    "edit": "تعديل",
+    "delete": "حذف",
     "search": "البحث",
     "add": "إضافة",
     "orders": "الطلبات",
@@ -34,12 +38,15 @@
     "submit": "إنشاء",
     "tools": "أدوات",
     "serial": "التسلسل",
+    "phone": "الهاتف",
     "from": "من",
     "to": "إلى",
     "duration": "المدة",
     "vacation": "أجازة",
     "leave": "أستئذان",
     "next": "التالي",
-    "previous": "السابق"
+    "previous": "السابق",
+    "total_emp": "اجمالي عدد الموظفين",
+    "remove_emp": "حذف الموظف"
   }
 }
