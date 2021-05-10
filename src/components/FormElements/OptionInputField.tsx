@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { OptionInputProps } from "../../static/StaticOptions";
 
 interface OptionInputFieldProps {
@@ -18,6 +19,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
   onChange,
   value,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="field">
       <label className="label" htmlFor={name}>
@@ -29,7 +31,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
           {options &&
             options.map((opt) => (
               <option key={opt.value} value={opt.value}>
-                {opt.title ?? opt.value}
+                {t(opt.title ?? opt.value)}
               </option>
             ))}
         </select>
