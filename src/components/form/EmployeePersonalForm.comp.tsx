@@ -54,6 +54,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
       <div className="columns is-multiline has" style={{ borderRadius: "12px" }}>
         <div className="column is-4">
           <InputField
+            required
             label={t("name")}
             name="name"
             type="text"
@@ -64,6 +65,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
         </div>
         <div className="column is-3">
           <InputField
+            required
             label={t("civil_id")}
             name="civil_id"
             type="number"

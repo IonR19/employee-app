@@ -6,10 +6,12 @@ interface InputFieldProps {
   type?: string;
   placeholder?: string;
   value?: string;
+  required?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
+  required = false,
   name,
   label = "",
   type = "text",
@@ -25,6 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
       <div className="field">
         <div className="control">
           <input
+            required={required}
             className="input"
             value={value}
             onChange={onChange}
