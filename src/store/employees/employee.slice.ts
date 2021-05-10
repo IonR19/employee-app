@@ -29,6 +29,7 @@ const employeeSlice = createSlice({
     },
     setFilter(state, { payload }: PayloadAction<iFilter>) {
       state.filter = payload;
+      state.pagination.currentPage = 1;
     },
     resetFilter(state) {
       state.filter = {};
@@ -81,7 +82,9 @@ const employeeSlice = createSlice({
         const { currentPage, rowsPerPage } = state.pagination;
         const { length } = state.order;
         state.pagination.currentPage = Math.min(currentPage, Math.ceil(length / rowsPerPage));
-      });
+      }).addDefaultCase((state) => {
+        state.pagination.currentPage = 1;
+      })
   },
 });
 
