@@ -1,11 +1,13 @@
 import React from "react";
+import { Dropdown, Menu } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import { SectionOptions } from "../../static/StaticOptions";
 import { ChangeLanguage } from "../../store/settings";
 
 interface Props {}
 
-const NavbarSwitchLang: React.FC<Props> = (props) => {
+const NavbarChangeSettings: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const languageChangeHandler = () => {
@@ -24,9 +26,20 @@ const NavbarSwitchLang: React.FC<Props> = (props) => {
         <a className="navbar-item" onClick={languageChangeHandler}>
           {t("switch_lng")}
         </a>
+        <Menu>
+          <Menu.List>
+            <Menu.List.Item>
+              <Dropdown label={t("work_location")}>
+                {SectionOptions.map((option) => (
+                  <Dropdown.Item value={option.value}>{option.title}</Dropdown.Item>
+                ))}
+              </Dropdown>
+            </Menu.List.Item>
+          </Menu.List>
+        </Menu>
       </div>
     </div>
   );
 };
 
-export default NavbarSwitchLang;
+export default NavbarChangeSettings;

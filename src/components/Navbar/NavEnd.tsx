@@ -1,10 +1,10 @@
 import React from "react";
-import NavbarSwitchLang from "./NavbarSwitchLang.comp";
+import NavbarChangeSettings from "./NavbarChangeSettings.comp";
 
 const NavEnd: React.FC = () => {
   return (
     <div className="navbar-end">
-      <NavbarSwitchLang />
+      <NavbarChangeSettings />
       <div className="navbar-item">
         <div className="buttons">
           <a className="button is-primary">

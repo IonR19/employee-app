@@ -1,6 +1,6 @@
 import React from "react";
 import NavbarLogo from "./NavbarLogo";
-import NavbarSwitchLang from "./NavbarSwitchLang.comp";
+import NavbarChangeSettings from "./NavbarChangeSettings.comp";
 import NavEnd from "./NavEnd";
 import NavStart from "./NavStart";
 
