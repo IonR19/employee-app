@@ -143,6 +143,11 @@ export const SectionOptions: OptionInputProps[] = [
   { value: "CIVIL", title: "Civil Work" },
 ];
 
+export const WorkSector: OptionInputProps[] = [
+  { value: "emergency", title: "emergency" },
+  { value: "operation", title: "operation" },
+];
+
 export const vacationOptions = [];
 
 export const transferOptions = {

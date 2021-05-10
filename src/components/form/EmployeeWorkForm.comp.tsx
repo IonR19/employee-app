@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { SectionOptions } from "../../static/StaticOptions";
+import { WorkSector } from "../../static/StaticOptions";
 import InputField from "../FormElements/InputField";
 import OptionInputField from "../FormElements/OptionInputField";
 
@@ -108,7 +108,7 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
             label={t("section")}
             name="section"
             value={section}
-            options={SectionOptions}
+            options={WorkSector}
             onChange={handleState}
           />
         </div>

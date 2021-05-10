@@ -177,6 +177,8 @@
     "Mubarak Al Kabeer": "مراقبة مبارك الكبير",
     "Maintenance & Protection": "قسم الصيانة الواقاية",
     "Saftey & Security": "قسم الأمن والسلامة",
-    "Civil Work": "قسم الأعمال المدنية"
+    "Civil Work": "قسم الأعمال المدنية",
+    "emergency": "التشغيل",
+    "operation": "الطوارئ"
   }
 }
