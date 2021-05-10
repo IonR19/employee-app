@@ -31,7 +31,7 @@ const NavbarChangeSettings: React.FC<Props> = (props) => {
             <Menu.List.Item>
               <Dropdown label={t("work_location")}>
                 {SectionOptions.map((option) => (
-                  <Dropdown.Item value={option.value}>{option.title}</Dropdown.Item>
+                  <Dropdown.Item value={option.value}>{t(option.title ?? "?")}</Dropdown.Item>
                 ))}
               </Dropdown>
             </Menu.List.Item>

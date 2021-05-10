@@ -167,6 +167,16 @@
     "Single": "أعزب",
     "Married": "متزوج",
     "Divorced": "مطلق",
-    "Widow": "أرملة"
+    "Widow": "أرملة",
+    "work_location": "مكان العمل",
+    "Ahmadi": "مراقبة الأحمدي",
+    "Jahra": "مراقبة الجهراء",
+    "Farwaniya": "مراقبة الفروانية",
+    "Asima": "مراقبة العاصمة",
+    "Hawally": "مراقبة حولي",
+    "Mubarak Al Kabeer": "مراقبة مبارك الكبير",
+    "Maintenance & Protection": "قسم الصيانة الواقاية",
+    "Saftey & Security": "قسم الأمن والسلامة",
+    "Civil Work": "قسم الأعمال المدنية"
   }
 }
