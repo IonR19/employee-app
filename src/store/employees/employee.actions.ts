@@ -40,7 +40,6 @@ export const deleteEmployeeById = createAsyncThunk<string, iDeleteEmployeeById>(
 //todo: if already started return to avoid double add ???
 export const addEmployee = createAsyncThunk("addEmployee", async (employee: iEmployee) => {
   const { site } = store.getState().employees;
-  console.log({ ...employee, site });
   const { data } = await api.post<iEmployee>("/employees", { ...employee, site });
   return data;
 });

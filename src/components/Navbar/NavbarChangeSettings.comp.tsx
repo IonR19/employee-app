@@ -30,23 +30,23 @@ const NavbarChangeSettings: React.FC<Props> = (props) => {
         <a className="navbar-item" onClick={languageChangeHandler}>
           {t("switch_lng")}
         </a>
-              <Dropdown
-                icon={
-                  <Icon>
-                    <i aria-hidden="true" className="fas fa-angle-down" />
-                  </Icon>
-                }
-                label={t("work_location")}
-                value={site}
-                onChange={(e: string) => dispatch(setSite(e))}
-              >
-                {SectionOptions.map((option, i) => (
-                  <Dropdown.Item renderAs="a" key={i} value={option.value}>
-                    {t(option.title ?? "?")}
-                  </Dropdown.Item>
-                ))}
-                <Dropdown.Item value="ah">{t("all")}</Dropdown.Item>
-              </Dropdown>
+        <Dropdown
+          icon={
+            <Icon>
+              <i aria-hidden="true" className="fas fa-angle-down" />
+            </Icon>
+          }
+          label={t("work_location")}
+          value={site}
+          onChange={(e: string) => dispatch(setSite(e))}
+        >
+          {SectionOptions.map((option, i) => (
+            <Dropdown.Item renderAs="a" key={i} value={option.value}>
+              {t(option.title ?? "?")}
+            </Dropdown.Item>
+          ))}
+          <Dropdown.Item value={undefined}>{t("all")}</Dropdown.Item>
+        </Dropdown>
       </div>
     </div>
   );
