@@ -2,8 +2,12 @@ import { api } from "../../utils";
 import { iEmployee, iFilter } from "../../models";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchEmployees = createAsyncThunk("fetchEmployees", async (filter?: string) => {
-  const { data } = await api.get("/employees", { params: { _limit: 1e5 } });
+type Filter = {
+  site?: string;
+};
+
+export const fetchEmployees = createAsyncThunk("fetchEmployees", async (filter?: Filter) => {
+  const { data } = await api.get("/employees", { params: { _limit: 1e5, work: filter?.site } });
   return data as iEmployee[];
 });
 

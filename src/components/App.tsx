@@ -7,16 +7,18 @@ import EmployeeEdit from "../pages/People/edit/EmployeeEdit.page";
 import EmployeeVacation from "../pages/People/vacation/EmployeeVacation.page";
 
 import "./App.scss";
-import { useDispatch } from "react-redux";
-import { fetchEmployees } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEmployees, selectSite } from "../store";
 import OrderList from "../pages/Orders/List/OrderList.page";
 import EmployeeRemove from "../pages/People/remove/EmployeeRemove.page";
 
 export default function App() {
   const dispatch = useDispatch();
+
+  const site = useSelector(selectSite);
   React.useEffect(() => {
-    dispatch(fetchEmployees());
-  });
+    dispatch(fetchEmployees({ site }));
+  }, [site]);
 
   return (
     <BrowserRouter>

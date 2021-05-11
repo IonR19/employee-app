@@ -1,5 +1,6 @@
-import { createReducer, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { iEmployee, iFilter } from "../../models";
+import { SectionOptions } from "../../static/StaticOptions";
 import { addEmployee, deleteEmployeeById, fetchEmployees, updateEmployeeById } from "./employee.actions";
 
 const employeeSlice = createSlice({
@@ -18,8 +19,12 @@ const employeeSlice = createSlice({
       currentPage: 1,
       rowsPerPage: 10,
     },
+    site: undefined as string | undefined,
   },
   reducers: {
+    setSite(state, { payload }: PayloadAction<string>) {
+      state.site = payload;
+    },
     setElementPerPage(state, { payload }: PayloadAction<number>) {
       state.pagination.currentPage = 1;
       state.pagination.rowsPerPage = payload;
@@ -57,7 +62,7 @@ const employeeSlice = createSlice({
       })
       .addCase(updateEmployeeById.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
-        state.loading.editing = false
+        state.loading.editing = false;
       })
       .addCase(updateEmployeeById.pending, (state) => {
         state.loading.editing = true;
@@ -82,12 +87,13 @@ const employeeSlice = createSlice({
         const { currentPage, rowsPerPage } = state.pagination;
         const { length } = state.order;
         state.pagination.currentPage = Math.min(currentPage, Math.ceil(length / rowsPerPage));
-      }).addDefaultCase((state) => {
-        state.pagination.currentPage = 1;
       })
+      .addDefaultCase((state) => {
+        state.pagination.currentPage = 1;
+      });
   },
 });
 
-export const { setFilter, resetFilter, setElementPerPage, setPage } = employeeSlice.actions;
+export const { setFilter, resetFilter, setElementPerPage, setPage, setSite } = employeeSlice.actions;
 
 export default employeeSlice;

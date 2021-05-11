@@ -58,3 +58,5 @@ export const selectEmployeeById = createSelector([employees, selectId], (employe
 export const selectEmployeesByCivilId = createSelector([employees], (emp) => {
   return _.values(emp).map((emp) => emp.civil_id);
 });
+
+export const selectSite = (state: RootState) => state.employees.site;
