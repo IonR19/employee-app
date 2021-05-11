@@ -3,7 +3,7 @@ import { Dropdown, Icon, Menu } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { SectionOptions } from "../../static/StaticOptions";
-import { setSite } from "../../store";
+import { setSite, useTypedSelector } from "../../store";
 import { ChangeLanguage } from "../../store/settings";
 
 interface Props {}
@@ -19,6 +19,9 @@ const NavbarChangeSettings: React.FC<Props> = (props) => {
     dispatch(ChangeLanguage());
     i18n.changeLanguage(newLang);
   };
+
+  const site = useTypedSelector((s) => s.employees.site);
+
   return (
     <div className="navbar-item has-dropdown is-hoverable">
       <a className="navbar-link">{t("settings")}</a>
@@ -27,9 +30,6 @@ const NavbarChangeSettings: React.FC<Props> = (props) => {
         <a className="navbar-item" onClick={languageChangeHandler}>
           {t("switch_lng")}
         </a>
-        <Menu>
-          <Menu.List>
-            <Menu.List.Item>
               <Dropdown
                 icon={
                   <Icon>
@@ -37,18 +37,16 @@ const NavbarChangeSettings: React.FC<Props> = (props) => {
                   </Icon>
                 }
                 label={t("work_location")}
+                value={site}
                 onChange={(e: string) => dispatch(setSite(e))}
               >
                 {SectionOptions.map((option, i) => (
-                  <Dropdown.Item key={i} renderAs="a" value={option.value}>
+                  <Dropdown.Item renderAs="a" key={i} value={option.value}>
                     {t(option.title ?? "?")}
                   </Dropdown.Item>
                 ))}
-                <Dropdown.Item value={null}>{t("all")}</Dropdown.Item>
+                <Dropdown.Item value="ah">{t("all")}</Dropdown.Item>
               </Dropdown>
-            </Menu.List.Item>
-          </Menu.List>
-        </Menu>
       </div>
     </div>
   );
