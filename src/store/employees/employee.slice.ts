@@ -43,17 +43,17 @@ const employeeSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchEmployees.pending, (state) => {
-        state.loading.creating = true;
+        state.loading.getting = true;
       })
       .addCase(fetchEmployees.rejected, (state) => {
-        state.loading.creating = false;
+        state.loading.getting = false;
       })
       .addCase(fetchEmployees.fulfilled, (state, { payload }) => {
         state.byId = payload.reduce((pre, cur) => {
           pre[cur.id!] = cur;
           return pre;
         }, {} as any);
-        state.loading.creating = false;
+        state.loading.getting = false;
         state.order = payload.map((emp) => emp.id!);
       })
       .addCase(addEmployee.fulfilled, (state, { payload }) => {
