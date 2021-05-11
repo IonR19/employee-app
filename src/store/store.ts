@@ -1,5 +1,5 @@
 import { getDefaultMiddleware } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
+import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import employeeSlice from "./employees/employee.slice";
 import OrdersReducer from "./orders/orders.reducers";
@@ -18,3 +18,4 @@ const middlewares = [...getDefaultMiddleware()];
 export const store = createStore(reducers, applyMiddleware(...middlewares));
 export type RootState = ReturnType<typeof reducers>;
 export type DefaultRootState = RootState;
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;

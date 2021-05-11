@@ -3,7 +3,13 @@ import { Pagination } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import OptionInputField from "../../../components/FormElements/OptionInputField";
-import { RootState, selectFilteredEmployees, setElementPerPage, setPage } from "../../../store";
+import {
+  RootState,
+  selectFilteredEmployees,
+  setElementPerPage,
+  setPage,
+  useTypedSelector,
+} from "../../../store";
 interface Props {}
 
 const EmployeePagination = (props: Props) => {
@@ -16,9 +22,7 @@ const EmployeePagination = (props: Props) => {
   ];
 
   const dispatch = useDispatch();
-  const { currentPage, rowsPerPage } = useSelector((state: RootState) => {
-    return state.employees.pagination;
-  });
+  const { currentPage, rowsPerPage } = useTypedSelector((state) => state.employees.pagination);
   const { length } = useSelector(selectFilteredEmployees);
 
   let total = rowsPerPage >= length ? 0 : Math.ceil(length / rowsPerPage);
