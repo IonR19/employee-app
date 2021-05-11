@@ -1,13 +1,14 @@
 import { api } from "../../utils";
 import { iEmployee, iFilter } from "../../models";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { store, useTypedSelector } from "../store";
 
 type Filter = {
   site?: string;
 };
 
 export const fetchEmployees = createAsyncThunk("fetchEmployees", async (filter?: Filter) => {
-  const { data } = await api.get("/employees", { params: { _limit: 1e5, work: filter?.site } });
+  const { data } = await api.get("/employees", { params: { _limit: 1e5, site: filter?.site } });
   return data as iEmployee[];
 });
 
@@ -38,7 +39,9 @@ export const deleteEmployeeById = createAsyncThunk<string, iDeleteEmployeeById>(
 //redirect to view ?
 //todo: if already started return to avoid double add ???
 export const addEmployee = createAsyncThunk("addEmployee", async (employee: iEmployee) => {
-  const { data } = await api.post<iEmployee>("/employees", employee);
+  const { site } = store.getState().employees;
+  console.log({ ...employee, site });
+  const { data } = await api.post<iEmployee>("/employees", { ...employee, site });
   return data;
 });
 
