@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import EmployeeProfileSearch from "./EmployeeProfileSearch.comp";
 
 const EmployeeSearchTabs: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState(0);
+  const { t } = useTranslation();
 
   return (
     <div className="box">
@@ -11,12 +13,12 @@ const EmployeeSearchTabs: React.FC = () => {
           <li className={activeTab === 0 ? "is-active" : ""} onClick={() => setActiveTab(0)}>
             <a>
               <span className="icon is-small">
-                <i className="fas fa-user-alt"></i>
+                <i className="fas fa-filter"></i>
               </span>
-              <span>Profile</span>
+              {/* <span>{t("Profile")}</span> */}
             </a>
           </li>
-          <li className={activeTab === 1 ? "is-active" : ""} onClick={() => setActiveTab(1)}>
+          {/* <li className={activeTab === 1 ? "is-active" : ""} onClick={() => setActiveTab(1)}>
             <a>
               <span className="icon is-small">
                 <i className="fas fa-database"></i>
@@ -31,7 +33,7 @@ const EmployeeSearchTabs: React.FC = () => {
               </span>
               <span>Additional</span>
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
       <EmployeeProfileSearch activeTab={activeTab} />

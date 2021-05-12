@@ -3,7 +3,7 @@ import { Button } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { iEmployee } from "../../models";
-import { RootState } from "../../store";
+import { RootState, useTypedSelector } from "../../store";
 import LocationForm from "./EmployeeLocationForm.comp";
 import PersonalForm from "./EmployeePersonalForm.comp";
 import WorkForm from "./EmployeeWorkForm.comp";
@@ -33,11 +33,11 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
   };
 
   const { t } = useTranslation();
-
+  const lng = useTypedSelector((state) => state.settings.app_lng) == "ar" ? "rtl" : "";
   const { creating, editing } = useSelector((state: RootState) => state.employees.loading);
 
   return (
-    <form className="form" onSubmit={handleSubmit} ref={formRef}>
+    <form className={"form " + lng} onSubmit={handleSubmit} ref={formRef}>
       <PersonalForm initialValues={initialValues} />
       <WorkForm initialValues={initialValues} />
       <LocationForm initialValues={initialValues} />

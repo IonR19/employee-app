@@ -60,7 +60,6 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             type="text"
             value={name}
             onChange={handleState}
-            placeholder="Full name"
           />
         </div>
         <div className="column is-3">
@@ -89,6 +88,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             options={NationalityOption}
             value={nationality}
             onChange={handleState}
+            includeEmpty
           />
         </div>
         <div className="column is-2">
@@ -98,6 +98,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             options={MartialOptions}
             value={martial}
             onChange={handleState}
+            includeEmpty
           />
         </div>
         <div className="column is-5">

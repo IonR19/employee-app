@@ -52,7 +52,6 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
             name="job_title"
             value={job_title}
             onChange={handleState}
-            placeholder="Full name"
           />
         </div>
         <div className="column is-4">
@@ -110,6 +109,7 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
             value={section}
             options={WorkSector}
             onChange={handleState}
+            includeEmpty
           />
         </div>
       </div>
