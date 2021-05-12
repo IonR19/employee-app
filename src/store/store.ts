@@ -13,12 +13,17 @@ const reducers = combineReducers({
   settings: SettingsReducer,
 });
 
-const middlewares = [...getDefaultMiddleware(), logger];
+const middlewares = [...getDefaultMiddleware()];
+
+if (process.env.NODE_ENV != "production") {
+  middlewares.push(logger);
+}
 
 // export const store = createStore(reducers, applyMiddleware(...middlewares));
 export const store = configureStore({
   reducer: reducers,
   middleware: middlewares,
+  devTools: process.env.NODE_ENV == "development",
 });
 export type RootState = ReturnType<typeof reducers>;
 export type DefaultRootState = RootState;
