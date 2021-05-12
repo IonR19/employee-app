@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import EmployeeAdd from "../pages/People/add/EmployeeAdd.page";
 import Navbar from "./Navbar/Navbar";
 import EmployeeSearch from "../pages/People/search/EmployeeSearch.page";
@@ -21,7 +21,7 @@ export default function App() {
   }, [site]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <div className="has-background-grey-darker py-5" id="App">
         <div className="container">
@@ -34,6 +34,6 @@ export default function App() {
           </Switch>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
