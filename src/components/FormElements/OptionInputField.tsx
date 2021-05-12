@@ -27,7 +27,7 @@ const OptionInputField: React.FC<OptionInputFieldProps> = ({
       </label>
       <div className="select">
         <select name={name} id={name} value={value} onChange={onChange}>
-          {includeEmpty && <option value="">Select an option</option>}
+          {includeEmpty && <option value=""></option>}
           {options &&
             options.map((opt) => (
               <option key={opt.value} value={opt.value}>
