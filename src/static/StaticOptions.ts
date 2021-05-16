@@ -4,6 +4,8 @@ export interface OptionInputProps {
 }
 
 export const NationalityOption: OptionInputProps[] = [
+  { value: "Kuwaiti" },
+  { value: "Egyptian" },
   { value: "Afghan" },
   { value: "Albanian" },
   { value: "Algerian" },
@@ -30,7 +32,6 @@ export const NationalityOption: OptionInputProps[] = [
   { value: "Danish" },
   { value: "Dominican" },
   { value: "Ecuadorian" },
-  { value: "Egyptian" },
   { value: "Salvadorian" },
   { value: "English" },
   { value: "Estonian" },
@@ -57,7 +58,6 @@ export const NationalityOption: OptionInputProps[] = [
   { value: "Japanese" },
   { value: "Jordanian" },
   { value: "Kenyan" },
-  { value: "Kuwaiti" },
   { value: "Lao" },
   { value: "Latvian" },
   { value: "Lebanese" },
@@ -159,3 +159,5 @@ export const leaveOptions: OptionInputProps[] = [
   { value: "start", title: "mid-shift" },
   { value: "end", title: "end-shift" },
 ];
+
+
