@@ -45,7 +45,9 @@ const NavbarChangeSettings: React.FC<Props> = (props) => {
               {t(option.title ?? "?")}
             </Dropdown.Item>
           ))}
-          <Dropdown.Item value={undefined}>{t("all")}</Dropdown.Item>
+          <Dropdown.Item renderAs="a" value={undefined}>
+            {t("all")}
+          </Dropdown.Item>
         </Dropdown>
       </div>
     </div>
