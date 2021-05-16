@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { WorkSector } from "../../static/StaticOptions";
 import InputField from "../FormElements/InputField";
 import OptionInputField from "../FormElements/OptionInputField";
-
+import { Form } from "react-bulma-components";
 interface WorkFormProps {
   initialValues?: {
     job_title: string;
@@ -13,6 +13,7 @@ interface WorkFormProps {
     hire_on: string;
     years_exp: string;
     section: string;
+    file_no: string;
   };
 }
 const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
@@ -24,8 +25,10 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
     hire_on: initialValues?.hire_on || "",
     years_exp: initialValues?.years_exp || "",
     section: initialValues?.section || "",
+    file_no: initialValues?.file_no || "",
   });
-  const { authority, education_level, hire_on, job_title, move_in, years_exp, section } = values;
+  const { authority, education_level, hire_on, job_title, move_in, years_exp, section, file_no } =
+    values;
 
   const handleState = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     let { name, value } = e.target;
@@ -47,12 +50,7 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
       <h1 className="title has-text-centered">{t("work_data")}</h1>
       <div className="columns is-multiline has-background-info-light" style={{ borderRadius: "12px" }}>
         <div className="column is-4">
-          <InputField
-            label={t("job_title")}
-            name="job_title"
-            value={job_title}
-            onChange={handleState}
-          />
+          <InputField label={t("job_title")} name="job_title" value={job_title} onChange={handleState} />
         </div>
         <div className="column is-4">
           <InputField
@@ -63,7 +61,11 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
             onChange={handleState}
           />
         </div>
-        <div className="column is-4 is-flex is-align-items-center is-justify-content-center">
+        <div className="column">
+          <Form.Label htmlFor="file_no">{t("file_no")}</Form.Label>
+          <Form.Input id="file_no" name="file_no" value={file_no} onChange={handleState}></Form.Input>
+        </div>
+        <div className="column is-2 is-flex is-align-items-center is-justify-content-center">
           <label className="checkbox label">
             <input
               className="mx-3"
