@@ -10,7 +10,6 @@ import "./App.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees, selectSite } from "../store";
 import OrderList from "../pages/Orders/List/OrderList.page";
-import EmployeeRemove from "../pages/People/remove/EmployeeRemove.page";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ export default function App() {
   return (
     <HashRouter>
       <Navbar />
-      <div className="has-background-grey-darker py-5" id="App">
+      <div className="has-background-grey-lighter py-5" id="App">
         <div className="container">
           <Switch>
             <Route path="/orders" component={OrderList} />
