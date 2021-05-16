@@ -29,11 +29,11 @@ const EmployeeSearchTable: React.FC = (props: any) => {
         <tbody>
           {employees.map((emp: any, index: number) => (
             <tr key={emp.id}>
-              <td>{emp.name}</td>
-              <td>{emp.civil_id}</td>
-              <td>{emp.file_no}</td>
-              <td>{emp.section}</td>
-              <td>{emp.level}</td>
+              <td>{t(emp.name)}</td>
+              <td>{t(emp.civil_id)}</td>
+              <td>{t(emp.file_no)}</td>
+              <td>{t(emp.section)}</td>
+              <td>{t(emp.level)}</td>
               <td>
                 <Link to={`/edit/${emp.id}`} className="button is-info">
                   {t("edit")}
