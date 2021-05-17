@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
-import { Block, Button, Notification } from "react-bulma-components";
+import { Button } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { iEmployee } from "../../models";
-import { appLanguageDir, clearAlerts, RootState } from "../../store";
+import { appLanguageDir, clearAlerts, RootState, useTypedSelector } from "../../store";
+import Alert from "../Alert/Alert.comp";
 import LocationForm from "./EmployeeLocationForm.comp";
 import PersonalForm from "./EmployeePersonalForm.comp";
 import WorkForm from "./EmployeeWorkForm.comp";
@@ -32,11 +33,12 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
     onSubmit(Employee as iEmployee);
     // clearAlerts
   };
-
+  const {
+    alerts,
+    loading: { creating, editing },
+  } = useTypedSelector((s) => s.employees);
+  const lng = useTypedSelector(appLanguageDir);
   const { t } = useTranslation();
-  const lng = useSelector(appLanguageDir);
-  const { creating, editing } = useSelector((state: RootState) => state.employees.loading);
-  const dispatch = useDispatch();
   return (
     <form className={"form " + lng} onSubmit={handleSubmit} ref={formRef}>
       <PersonalForm initialValues={initialValues} />
@@ -44,11 +46,6 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
       <LocationForm initialValues={initialValues} />
 
       <div className="box">
-      <Block>
-        <Notification>
-          <Button type="button" remove onClick={() => dispatch(clearAlerts)} />
-        </Notification>
-      </Block>
         <div className="field is-grouped is-grouped-centered">
           <p className="control">
             <Button color="primary" type="submit" loading={creating || editing}>
@@ -60,6 +57,11 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
           </p>
         </div>
       </div>
+      {alerts.map((alert, i) => (
+        <Alert key={i} id={i} type={alert.type}>
+          {alert.msg}
+        </Alert>
+      ))}
     </form>
   );
 };

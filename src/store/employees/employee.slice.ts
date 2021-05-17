@@ -3,7 +3,7 @@ import { iEmployee, iFilter } from "../../models";
 import { addEmployee, deleteEmployeeById, fetchEmployees, updateEmployeeById } from "./employee.actions";
 
 export interface iAlert {
-  type: "ok" | "fail";
+  type: "success" | "danger" | "warning";
   msg?: string;
 }
 
@@ -13,7 +13,7 @@ const employeeSlice = createSlice({
     byId: {} as { [id: string]: iEmployee },
     order: [] as string[],
     filter: {} as iFilter,
-    alerts: [{type: 'ok', msg:"test"}] as iAlert[],
+    alerts: [] as iAlert[],
     loading: {
       getting: false,
       deleting: false,
@@ -47,6 +47,9 @@ const employeeSlice = createSlice({
     clearAlerts(state) {
       state.alerts = [];
     },
+    clearAlert(state, { payload }: PayloadAction<number>) {
+      state.alerts.splice(payload, 1);
+    },
   },
   extraReducers(builder) {
     builder
@@ -68,24 +71,26 @@ const employeeSlice = createSlice({
         state.byId[payload.id!] = payload;
         state.order.push(payload.id!);
         state.loading.creating = false;
-        state.alerts.push({ type: "ok", msg: "done" });
+        state.alerts.push({ type: "success" });
       })
       .addCase(addEmployee.pending, (state) => {
         state.loading.creating = true;
       })
       .addCase(addEmployee.rejected, (state) => {
         state.loading.creating = false;
+        state.alerts.push({ type: "danger" });
       })
       .addCase(updateEmployeeById.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
         state.loading.editing = false;
-        state.alerts.push({ type: "ok", msg: "done" });
+        state.alerts.push({ type: "success" });
       })
       .addCase(updateEmployeeById.pending, (state) => {
         state.loading.editing = true;
       })
       .addCase(updateEmployeeById.rejected, (state) => {
         state.loading.editing = false;
+        state.alerts.push({ type: "danger" });
       })
       .addCase(deleteEmployeeById.pending, (state) => {
         state.loading.deleting = true;
@@ -111,7 +116,7 @@ const employeeSlice = createSlice({
   },
 });
 
-export const { setFilter, resetFilter, setElementPerPage, setPage, setSite, clearAlerts } =
+export const { setFilter, resetFilter, setElementPerPage, setPage, setSite, clearAlerts, clearAlert } =
   employeeSlice.actions;
 
 export default employeeSlice;
