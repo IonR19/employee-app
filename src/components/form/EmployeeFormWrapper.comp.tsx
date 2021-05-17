@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { Button } from "react-bulma-components";
+import { Block, Button, Notification } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { iEmployee } from "../../models";
-import { RootState, useTypedSelector } from "../../store";
+import { appLanguageDir, clearAlerts, RootState } from "../../store";
 import LocationForm from "./EmployeeLocationForm.comp";
 import PersonalForm from "./EmployeePersonalForm.comp";
 import WorkForm from "./EmployeeWorkForm.comp";
@@ -30,12 +30,13 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
     }
 
     onSubmit(Employee as iEmployee);
+    // clearAlerts
   };
 
   const { t } = useTranslation();
-  const lng = useTypedSelector((state) => state.settings.app_lng) == "ar" ? "rtl" : "";
+  const lng = useSelector(appLanguageDir);
   const { creating, editing } = useSelector((state: RootState) => state.employees.loading);
-
+  const dispatch = useDispatch();
   return (
     <form className={"form " + lng} onSubmit={handleSubmit} ref={formRef}>
       <PersonalForm initialValues={initialValues} />
@@ -43,6 +44,11 @@ const EmployeeFormWrapper: React.FC<EmployeeFormWrapperProps> = ({ initialValues
       <LocationForm initialValues={initialValues} />
 
       <div className="box">
+      <Block>
+        <Notification>
+          <Button type="button" remove onClick={() => dispatch(clearAlerts)} />
+        </Notification>
+      </Block>
         <div className="field is-grouped is-grouped-centered">
           <p className="control">
             <Button color="primary" type="submit" loading={creating || editing}>

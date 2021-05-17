@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { iEmployee, iFilter } from "../../models";
-import { SectionOptions } from "../../static/StaticOptions";
 import { addEmployee, deleteEmployeeById, fetchEmployees, updateEmployeeById } from "./employee.actions";
+
+export interface iAlert {
+  type: "ok" | "fail";
+  msg?: string;
+}
 
 const employeeSlice = createSlice({
   name: "employee",
@@ -9,6 +13,7 @@ const employeeSlice = createSlice({
     byId: {} as { [id: string]: iEmployee },
     order: [] as string[],
     filter: {} as iFilter,
+    alerts: [{type: 'ok', msg:"test"}] as iAlert[],
     loading: {
       getting: false,
       deleting: false,
@@ -39,6 +44,9 @@ const employeeSlice = createSlice({
     resetFilter(state) {
       state.filter = {};
     },
+    clearAlerts(state) {
+      state.alerts = [];
+    },
   },
   extraReducers(builder) {
     builder
@@ -60,6 +68,7 @@ const employeeSlice = createSlice({
         state.byId[payload.id!] = payload;
         state.order.push(payload.id!);
         state.loading.creating = false;
+        state.alerts.push({ type: "ok", msg: "done" });
       })
       .addCase(addEmployee.pending, (state) => {
         state.loading.creating = true;
@@ -70,6 +79,7 @@ const employeeSlice = createSlice({
       .addCase(updateEmployeeById.fulfilled, (state, { payload }) => {
         state.byId[payload.id!] = payload;
         state.loading.editing = false;
+        state.alerts.push({ type: "ok", msg: "done" });
       })
       .addCase(updateEmployeeById.pending, (state) => {
         state.loading.editing = true;
@@ -101,6 +111,7 @@ const employeeSlice = createSlice({
   },
 });
 
-export const { setFilter, resetFilter, setElementPerPage, setPage, setSite } = employeeSlice.actions;
+export const { setFilter, resetFilter, setElementPerPage, setPage, setSite, clearAlerts } =
+  employeeSlice.actions;
 
 export default employeeSlice;

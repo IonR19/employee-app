@@ -23,7 +23,7 @@ if (process.env.NODE_ENV != "production") {
 export const store = configureStore({
   reducer: reducers,
   middleware: middlewares,
-  devTools: process.env.NODE_ENV == "development",
+  devTools: process.env.NODE_ENV !== "production",
 });
 export type RootState = ReturnType<typeof reducers>;
 export type DefaultRootState = RootState;
