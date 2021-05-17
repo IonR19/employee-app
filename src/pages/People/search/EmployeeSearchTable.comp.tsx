@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Icon } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom";
@@ -8,7 +9,7 @@ import EmployeePagination from "./EmployeePagination.comp";
 
 const EmployeeSearchTable: React.FC = (props: any) => {
   const employees = useSelector(selectPagedFilteredEmployees);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const lng = useSelector(appLanguageDir);
   const count = useSelector(selectEmployeesCount);
 
@@ -34,13 +35,17 @@ const EmployeeSearchTable: React.FC = (props: any) => {
               <td>{t(emp.file_no)}</td>
               <td>{t(emp.section)}</td>
               <td>{t(emp.level)}</td>
-              <td>
-                <Link to={`/edit/${emp.id}`} className="button is-info">
-                  {t("edit")}
-                </Link>
-                <Link to={`/delete/${emp.id}`} className="button">
-                  {t("delete")}
-                </Link>
+              <td align="center">
+                <abbr title={t("edit")}>
+                  <Link to={`/edit/${emp.id}`} className="button is-info">
+                    <Icon className="fas fa-wrench"></Icon>
+                  </Link>
+                </abbr>
+                <abbr title={t("delete")}>
+                  <Link to={`/delete/${emp.id}`} className="button">
+                    <Icon className="fas fa-trash-alt"></Icon>
+                  </Link>
+                </abbr>
               </td>
             </tr>
           ))}
