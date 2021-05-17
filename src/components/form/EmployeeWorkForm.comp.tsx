@@ -57,7 +57,6 @@ const WorkForm: React.FC<WorkFormProps> = ({ initialValues }) => {
             label={t("education_level")}
             name="education_level"
             value={education_level}
-            type="number"
             onChange={handleState}
           />
         </div>
