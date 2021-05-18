@@ -13,7 +13,7 @@ const NavEnd: React.FC = () => {
 
   return (
     <div className="navbar-end">
-      <Navbar.Item>
+      <Navbar.Item renderAs="div">
         <Dropdown
           icon={
             <Icon>
