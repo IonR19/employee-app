@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Form } from "react-bulma-components";
 import { useTranslation } from "react-i18next";
 import { GenderOptions, MartialOptions, NationalityOption } from "../../static/StaticOptions";
 import InputField from "../FormElements/InputField";
@@ -13,6 +14,7 @@ interface PersonalFormProps {
     martial: string;
     email: string;
     mew_email: string;
+    phone: string;
   };
 }
 
@@ -25,6 +27,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
     martial: "",
     email: "",
     mew_email: "",
+    phone: "",
   });
   React.useEffect(() => {
     setValue({
@@ -36,9 +39,10 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
       martial: initialValues?.martial || "",
       email: initialValues?.email || "",
       mew_email: initialValues?.mew_email || "",
+      phone: initialValues?.phone || "",
     });
   }, [initialValues]);
-  const { civil_id, email, gender, martial, mew_email, name, nationality } = value;
+  const { civil_id, email, gender, martial, mew_email, name, nationality, phone } = value;
 
   const handleState = (e: any) => {
     setValue({
@@ -52,7 +56,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
     <div className="box">
       <h1 className="title has-text-centered">{t("personal_data")}</h1>
       <div className="columns is-multiline has" style={{ borderRadius: "12px" }}>
-        <div className="column is-4">
+        <div className="column is-6">
           <InputField
             required
             label={t("name")}
@@ -72,7 +76,11 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             onChange={handleState}
           />
         </div>
-        <div className="column">
+        <div className="column is-2">
+          <Form.Label htmlFor="phone">{t("phone")}</Form.Label>
+          <Form.Input id="phone" name="phone" value={phone} onChange={handleState}></Form.Input>
+        </div>
+        <div className="column is-1">
           <OptionInputField
             label={t("gender")}
             name="gender"
@@ -81,7 +89,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             onChange={handleState}
           />
         </div>
-        <div className="column is-3">
+        <div className="column is-2">
           <OptionInputField
             label={t("nationality")}
             name="nationality"
@@ -101,10 +109,10 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             includeEmpty
           />
         </div>
-        <div className="column is-5">
+        <div className="column is-4">
           <InputField label={t("email")} name="email" type="mail" value={email} onChange={handleState} />
         </div>
-        <div className="column is-5">
+        <div className="column is-4">
           <InputField
             label={t("mew_email")}
             name="mew_email"
