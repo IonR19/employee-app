@@ -56,7 +56,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
     <div className="box">
       <h1 className="title has-text-centered">{t("personal_data")}</h1>
       <div className="columns is-multiline has" style={{ borderRadius: "12px" }}>
-        <div className="column is-4">
+        <div className="column is-6">
           <InputField
             required
             label={t("name")}
@@ -76,11 +76,11 @@ const PersonalForm: React.FC<PersonalFormProps> = ({ initialValues }) => {
             onChange={handleState}
           />
         </div>
-        <div className="column is-3">
+        <div className="column is-2">
           <Form.Label htmlFor="phone">{t("phone")}</Form.Label>
-          <Form.Input id="phone" name="phone" type="number" onChange={handleState} value={phone} />
+          <Form.Input id="phone" name="phone" value={phone} onChange={handleState} />
         </div>
-        <div className="column">
+        <div className="column is-1">
           <OptionInputField
             label={t("gender")}
             name="gender"

@@ -26,22 +26,23 @@ const LocationForm: React.FC<LocationFormProps> = ({ initialValues }) => {
   };
 
   const { t } = useTranslation();
+  const { city, block, street, house } = value;
 
   return (
     <div className="box">
       <h1 className="title has-text-centered">{t("location_data")}</h1>
       <div className="columns is-multiline" style={{ borderRadius: "12px" }}>
         <div className="column">
-          <InputField label={t("city")} name="city" onChange={handleState} />
+          <InputField label={t("city")} name="city" value={city} onChange={handleState} />
         </div>
         <div className="column">
-          <InputField label={t("block")} name="block" onChange={handleState} />
+          <InputField label={t("block")} name="block" value={block} onChange={handleState} />
         </div>
         <div className="column">
-          <InputField label={t("street")} name="street" onChange={handleState} />
+          <InputField label={t("street")} name="street" value={street} onChange={handleState} />
         </div>
         <div className="column">
-          <InputField label={t("house")} name="house" onChange={handleState} />
+          <InputField label={t("house")} name="house" value={house} onChange={handleState} />
         </div>
       </div>
     </div>
